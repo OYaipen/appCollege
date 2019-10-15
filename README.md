@@ -1,13 +1,52 @@
+# Pasos para la instalacion 
 # appCollege
 
-# Pasos para la instalacion 
--composer install
--cp .env.example .env
--cambiar las credenciales de la base de datos en .env
--php artisan key:generate
--php artisan migrade --seed
--npm i
--npm run watch
--npm artisan serve
--en el navegador dirigirse a http://localhost:8000
--logearse usuario: taisale@gmail.com  contraseña:123
+## Configure el proyecto
+```
+npm install
+```
+```
+composer install
+```
+```
+cp .env.example .env
+```
+```
+php artisan key:generate
+```
+
+## cambiar las credenciales de la base de datos
+```
+crear una base de datos en mysql "appCollege"
+```
+```
+DB_DATABASE=appCollege
+```
+```
+DB_USERNAME=root
+```
+```
+DB_PASSWORD=
+```
+# suba las migraciones
+```
+php artisan migrade --seed
+```
+### Compile
+```
+npm run watch
+```
+
+### Levante el servidor
+```
+npm artisan serve
+```
+
+
+### Visualice en:
+```
+http://localhost:8000
+```
+```
+logearse usuario: taisale@gmail.com  contraseña:123
+```
