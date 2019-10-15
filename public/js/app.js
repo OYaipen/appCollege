@@ -9370,7 +9370,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-jalador[data-v-68795cb9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-jalador[data-v-68795cb9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-68795cb9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-68795cb9]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-jalador[data-v-68795cb9] { \n   color: rgb(10, 10, 10);\n}\n.icon-jalador[data-v-68795cb9]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-68795cb9] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-68795cb9]:hover {\n\t color: #340ca0;\n}\n", ""]);
 
 // exports
 
@@ -9389,7 +9389,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-informante[data-v-7675f9a6] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-informante[data-v-7675f9a6]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-7675f9a6] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-7675f9a6]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-informante[data-v-7675f9a6] { \n   color: rgb(10, 10, 10);\n}\n.icon-informante[data-v-7675f9a6]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-7675f9a6] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-7675f9a6]:hover {\n\t color: #340ca0;\n}\n", ""]);
 
 // exports
 
@@ -9408,7 +9408,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-informe[data-v-1f33d07d] { \r\n   color: rgb(63, 59, 59);\n}\n.icon-informe[data-v-1f33d07d]:hover {\r\n\t color: #cf4d25;\n}\n.icon-sistema[data-v-1f33d07d] { \r\n   color: rgb(139, 44, 44);\n}\n.icon-sistema[data-v-1f33d07d]:hover {\r\n\t color: #030303;\n}\n.icon-lapiz[data-v-1f33d07d] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-1f33d07d]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-informe[data-v-1f33d07d] { \n   color: rgb(63, 59, 59);\n}\n.icon-informe[data-v-1f33d07d]:hover {\n\t color: #cf4d25;\n}\n.icon-sistema[data-v-1f33d07d] { \n   color: rgb(139, 44, 44);\n}\n.icon-sistema[data-v-1f33d07d]:hover {\n\t color: #030303;\n}\n.icon-lapiz[data-v-1f33d07d] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-1f33d07d]:hover {\n\t color: #340ca0;\n}\n", ""]);
 
 // exports
 
@@ -9427,7 +9427,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-color[data-v-0403f83a] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-color[data-v-0403f83a]:hover {\r\n\t color: #cf4d25;\n}\n.icon-verde[data-v-0403f83a] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-verde[data-v-0403f83a]:hover {\r\n\t color: #69c05d;\n}\n.icon-perfil[data-v-0403f83a] { \r\n   color: rgb(8, 8, 8);\n}\n.icon-perfil[data-v-0403f83a]:hover {\r\n\t color: #2515ad;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.icon-color[data-v-0403f83a] { \n   color: rgb(10, 10, 10);\n}\n.icon-color[data-v-0403f83a]:hover {\n\t color: #cf4d25;\n}\n.icon-verde[data-v-0403f83a] { \n   color: rgb(10, 10, 10);\n}\n.icon-verde[data-v-0403f83a]:hover {\n\t color: #69c05d;\n}\n.icon-perfil[data-v-0403f83a] { \n   color: rgb(8, 8, 8);\n}\n.icon-perfil[data-v-0403f83a]:hover {\n\t color: #2515ad;\n}\n\n", ""]);
 
 // exports
 
@@ -9446,7 +9446,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-plan[data-v-01da45f9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-plan[data-v-01da45f9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-01da45f9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-01da45f9]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-plan[data-v-01da45f9] { \n   color: rgb(10, 10, 10);\n}\n.icon-plan[data-v-01da45f9]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-01da45f9] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-01da45f9]:hover {\n\t color: #340ca0;\n}\n", ""]);
 
 // exports
 
@@ -9465,7 +9465,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-ventas[data-v-68e44a60] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-ventas[data-v-68e44a60]:hover {\r\n\t color: #cf4d25;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-ventas[data-v-68e44a60] { \n   color: rgb(10, 10, 10);\n}\n.icon-ventas[data-v-68e44a60]:hover {\n\t color: #cf4d25;\n}\n", ""]);
 
 // exports
 
@@ -9484,7 +9484,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-utiles[data-v-05d7b04e] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-utiles[data-v-05d7b04e]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-05d7b04e] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-05d7b04e]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-utiles[data-v-05d7b04e] { \n   color: rgb(10, 10, 10);\n}\n.icon-utiles[data-v-05d7b04e]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-05d7b04e] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-05d7b04e]:hover {\n\t color: #340ca0;\n}\n", ""]);
 
 // exports
 
@@ -45429,7 +45429,7 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "fas fa-file-excel" }),
-                  _vm._v(" DESC EXCEL\r\n                      ")
+                  _vm._v(" DESC EXCEL\n                      ")
                 ]
               ),
               _vm._v(" "),
@@ -47964,7 +47964,7 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-file-excel" }),
-                    _vm._v(" DESC EXCEL \r\n                      ")
+                    _vm._v(" DESC EXCEL \n                      ")
                   ]
                 ),
                 _vm._v(" "),
@@ -62314,8 +62314,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\021019\AppCole\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\021019\AppCole\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/owen/Documents/Laravel-vue/appCollege/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/owen/Documents/Laravel-vue/appCollege/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
