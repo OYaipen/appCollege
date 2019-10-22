@@ -110,6 +110,7 @@ import swal from 'sweetalert';
                matricula: this.plan.matricula,
                primerpago: this.plan.primerpago,
                segundopago: this.plan.segundopago,
+               estado: 'activo'
                 }
 
              this.plan.nombre = '';

@@ -30,11 +30,7 @@
               <td><a class="icon-lapiz" href="" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
               @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
               <td>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" @click="Desactivar" 
-                  class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Desavtivar</label>
-                </div>
+              <input type="checkbox" class="activ" @click="activar(item)" v-bind:id="item.id" :checked="item.estado == 'activo'">
               </td> 
             </tr>
         </tbody>
@@ -66,7 +62,7 @@
             <input type="text" class="form-control" maxlength="9" v-model="informante.celular" required>
         </div>
           </div><!--final de body -->
-
+          
           <div class="modal-footer"><!--  inicio de footer -->
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-success">Save</button>
@@ -75,7 +71,7 @@
       </div>
     </div><!-- fin de modal -->
     </form><!--final de form  -->
-
+    
     </div>
 </template>
 
@@ -84,22 +80,19 @@ export default {
   data() {
     return {
       informantes:[], 
-      informante:{apellido:'',celular:''}, 
+      informante:{apellido:'',celular:'', estado:''}, 
       EditarInformanteActivo: false
     }
   },
   mounted() {
     console.log('estamos listos');
+    
     axios.get('/bd-informante')
     .then(res =>{
       this.informantes = res.data;
     })
   },
   methods:{
-    Desactivar(){
-      this.informante.apellido= false,
-      this.informante.celular=false
-    },
     EditarFormulario(item){
       this.EditarInformanteActivo = true;
 
@@ -109,26 +102,56 @@ export default {
     },
     
   EditarInformante(informante){
+    const x = document.getElementById(informante.id);
+    if(x.checked == true){
       const params = {apellido: informante.apellido,
-                      celular: informante.celular}
+                      celular: informante.celular,
+                      estado: 'activo'}
+
       axios.put(`/bd-informante/${informante.id}`,params)
 
-    .then(res => {
-        EditarInformante: false
-        const index= this.informantes.findIndex(
-          InformanteBuscar => InformanteBuscar.id === res.data.id )
-          this.informantes[index] = res.data;
+    }else{
+      const params = {apellido: informante.apellido,
+                      celular: informante.celular,
+                      estado: 'inactivo'}
+       axios.put(`/bd-informante/${informante.id}`,params)
+    }
 
-          // this.informante =  {apellido:'',celular:''}
-
-          axios.get('/bd-informante')
+    axios.get('/bd-informante')
             .then(res =>{
             this.informantes = res.data;
              swal(this.informante.apellido+" Actualizado!", "Actualizacion Correcta!", "success");
             $("#exampleModal").modal("hide");
             $('#exampleModal').modal({backdrop: 'static', keyboard: false})
           })
-      })
+      
+    },
+    activar(item){
+      const x = document.getElementById(item.id);
+      if(x.checked == true)
+      {
+        const params = {
+          apellido: item.apellido,
+          celular: item.celular,
+          estado: 'activo'
+        }
+        console.log(params)
+        axios.put(`/bd-informante/${item.id}`,params)
+      }
+      else
+      {
+        const params = {
+          apellido: item.apellido,
+          celular: item.celular,
+          estado: 'inactivo'
+        }
+        console.log(params)
+        axios.put(`/bd-informante/${item.id}`,params)
+      }
+      axios.get('/bd-informante')
+            .then(res =>{
+            this.informantes = res.data;
+          })
     }
   }
 }
@@ -145,5 +168,34 @@ export default {
 } 
 .icon-lapiz:hover {
 	 color: #340ca0;
+}
+.activ{
+  position: relative;
+  width: 30px;
+  height: 15px;
+  -webkit-appearance: none;
+  background: #c6c6c6;
+  outline: none;
+  border-radius: 20px;
+  transition: .5s;
+}
+.activ:checked{
+  background: #03a9f4;
+}
+.activ:before{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+  transition: .5s;
+}
+.activ:checked:before{
+  left: 15px;
 }
 </style>

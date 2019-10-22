@@ -21,6 +21,7 @@ class CreateRegistrarPlansTable extends Migration
             $table->integer('matricula')->nullable();
             $table->integer('primerpago')->nullable();
             $table->integer('segundopago')->nullable();
+            $table->string('estado');
             $table->bigInteger('user_id_plan')->unsigned();
             $table->foreign('user_id_plan')->references('id')->on('users');
             $table->timestamps();

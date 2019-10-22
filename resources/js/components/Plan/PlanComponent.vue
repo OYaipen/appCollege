@@ -34,10 +34,7 @@
         <td><a class="icon-lapiz" href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
          @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
         <td>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">Desavtivar</label>
-          </div>
+          <input type="checkbox" class="activ" @click="activar(item)" v-bind:id="item.id" :checked="item.estado == 'activo'">
         </td>
       </tr>
     </tbody>
@@ -156,21 +153,28 @@ export default {
     },
     
     EditarPlan(plan){
-      const params = {nombre: plan.nombre,
+      const x = document.getElementById(plan.id);
+      if(x.checked == true){
+        const params = {nombre: plan.nombre,
                       horario: plan.horario,
                       pension: plan.pension,
                       matricula: plan.matricula,
                       primerpago: plan.primerpago,
-                      segundopago: plan.segundopago}
+                      segundopago: plan.segundopago,
+                      estado: 'activo'}
       axios.put(`/bd-plan/${plan.id}`,params)
-
-      .then(res => {
-       EditarPlanEstudio: false
-        const index= this.plans.findIndex(
-          planBuscar => planBuscar.id === res.data.id )
-          this.plans[index] = res.data;
-
-          axios.get('/bd-plan')
+      }else{
+        const params = {nombre: plan.nombre,
+                      horario: plan.horario,
+                      pension: plan.pension,
+                      matricula: plan.matricula,
+                      primerpago: plan.primerpago,
+                      segundopago: plan.segundopago,
+                      estado: 'inactivo'}
+        axios.put(`/bd-plan/${plan.id}`,params)
+      }
+      
+      axios.get('/bd-plan')
             .then(res =>{
             this.plans = res.data;
              swal("Buen Trabajo!", "Plan Actualizado Correctamente!", "success");
@@ -178,7 +182,28 @@ export default {
             $("#exampleModal").modal("hide");
             $('#exampleModal').modal({backdrop: 'static', keyboard: false})
           })
-      })
+    },
+    activar(item){
+      const x = document.getElementById(item.id);
+      if(x.checked == true){
+        const params = {nombre: item.nombre,
+                      horario: item.horario,
+                      pension: item.pension,
+                      matricula: item.matricula,
+                      primerpago: item.primerpago,
+                      segundopago: item.segundopago,
+                      estado: 'activo'}
+        axios.put(`/bd-plan/${item.id}`,params)
+      }else{
+        const params = {nombre: item.nombre,
+                      horario: item.horario,
+                      pension: item.pension,
+                      matricula: item.matricula,
+                      primerpago: item.primerpago,
+                      segundopago: item.segundopago,
+                      estado: 'inactivo'}
+        axios.put(`/bd-plan/${item.id}`,params)
+      }
     }
   }
 }
@@ -195,5 +220,34 @@ export default {
 } 
 .icon-lapiz:hover {
 	 color: #340ca0;
+}
+.activ{
+  position: relative;
+  width: 30px;
+  height: 15px;
+  -webkit-appearance: none;
+  background: #c6c6c6;
+  outline: none;
+  border-radius: 20px;
+  transition: .5s;
+}
+.activ:checked{
+  background: #03a9f4;
+}
+.activ:before{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+  transition: .5s;
+}
+.activ:checked:before{
+  left: 15px;
 }
 </style>

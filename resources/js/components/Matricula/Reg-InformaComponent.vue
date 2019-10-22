@@ -173,7 +173,7 @@
                     </div>
                <select class="custom-select" id="SelectedId" v-model="rol.informante" required>
                 <option value="" disabled selected>Informante</option>
-                <option v-for="(item, index) in informantes" :key="index" v-bind:value="item.id">
+                <option v-for="(item, index) in informantes" :key="index" v-bind:value="item.id" v-if="item.estado == 'activo'">
                 {{item.apellido}}
                 </option>    
             </select>
@@ -186,7 +186,7 @@
                     </div>
                <select class="custom-select" id="SelectedId" v-model="rol.jalador" required>
                 <option value="" disabled selected>Jalador</option>
-                <option v-for="(item, index) in jaladores" :key="index" v-bind:value="item.id">
+                <option v-for="(item, index) in jaladores" :key="index" v-bind:value="item.id" v-if="item.estadoJ == 'activo'">
                 {{item.apellidoJ}}
                 </option>    
             </select>
@@ -211,16 +211,17 @@ export default {
             ventas:[],
             jaladores:[],
             plans:[],
-            informantes:[]
+            informantes:[],
+            informer: []
 
         }
     },
     mounted() {
-        console.log('estamos listos');
         axios.get('/bd-informante')
         .then(res =>{
          this.informantes = res.data;
-        }),
+        })
+        ,
         axios.get('/bd-jalador')
         .then(res =>{
         this.jaladores = res.data;

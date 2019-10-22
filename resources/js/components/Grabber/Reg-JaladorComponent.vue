@@ -50,7 +50,8 @@ import swal from 'sweetalert'
            }
            const params = {
                apellidoJ : this.jalador.apellidoJ,
-               celularJ: this.jalador.celularJ
+               celularJ: this.jalador.celularJ,
+               estadoJ: 'activo'
                 }
              this.jalador.apellidoJ = '';
              this.jalador.celularJ  = '';

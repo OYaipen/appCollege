@@ -1947,9 +1947,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1982,29 +1979,54 @@ __webpack_require__.r(__webpack_exports__);
     EditarJala: function EditarJala(jala) {
       var _this2 = this;
 
-      var params = {
-        apellidoJ: jala.apellidoJ,
-        celularJ: jala.celularJ
-      };
-      axios.put("/bd-jalador/".concat(jala.id), params).then(function (res) {
-        EditarJalador: false;
+      var x = document.getElementById(jala.id);
 
-        var index = _this2.jaladores.findIndex(function (jaladorBuscar) {
-          return jaladorBuscar.id === res.data.id;
-        });
+      if (x.checked == true) {
+        var params = {
+          apellidoJ: jala.apellidoJ,
+          celularJ: jala.celularJ,
+          estadoJ: 'activo'
+        };
+        axios.put("/bd-jalador/".concat(jala.id), params);
+      } else {
+        var _params = {
+          apellidoJ: jala.apellidoJ,
+          celularJ: jala.celularJ,
+          estadoJ: 'inactivo'
+        };
+        axios.put("/bd-jalador/".concat(jala.id), _params);
+      }
 
-        _this2.jaladores[index] = res.data; // this.jalador =  {apellidoJ:'',celularJ:''}
-
-        axios.get('/bd-jalador').then(function (res) {
-          _this2.jaladores = res.data;
-          swal(_this2.jalador.apellidoJ + " Actualizado!", "Acutalizacion Exitosa!", "success");
-          $("#exampleModal").modal("hide");
-          $('#exampleModal').modal({
-            backdrop: 'static',
-            keyboard: false
-          });
+      axios.get('/bd-jalador').then(function (res) {
+        _this2.jaladores = res.data;
+        swal(_this2.jalador.apellidoJ + " Actualizado!", "Acutalizacion Exitosa!", "success");
+        $("#exampleModal").modal("hide");
+        $('#exampleModal').modal({
+          backdrop: 'static',
+          keyboard: false
         });
       });
+    },
+    activar: function activar(item) {
+      var x = document.getElementById(item.id);
+
+      if (x.checked == true) {
+        var params = {
+          apellidoJ: item.apellidoJ,
+          celularJ: item.celularJ,
+          estadoJ: 'activo'
+        };
+        console.log(params);
+        axios.put("/bd-jalador/".concat(item.id), params);
+      } else {
+        var _params2 = {
+          apellidoJ: item.apellidoJ,
+          celularJ: item.celularJ,
+          estadoJ: 'inactivo'
+        };
+        console.log(_params2);
+        axios.put("/bd-jalador/".concat(item.id), _params2);
+      }
     }
   }
 });
@@ -2075,7 +2097,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var params = {
         apellidoJ: this.jalador.apellidoJ,
-        celularJ: this.jalador.celularJ
+        celularJ: this.jalador.celularJ,
+        estadoJ: 'activo'
       };
       this.jalador.apellidoJ = '';
       this.jalador.celularJ = '';
@@ -2176,17 +2199,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       informantes: [],
       informante: {
         apellido: '',
-        celular: ''
+        celular: '',
+        estado: ''
       },
       EditarInformanteActivo: false
     };
@@ -2200,9 +2220,6 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    Desactivar: function Desactivar() {
-      this.informante.apellido = false, this.informante.celular = false;
-    },
     EditarFormulario: function EditarFormulario(item) {
       this.EditarInformanteActivo = true;
       this.informante.apellido = item.apellido;
@@ -2212,28 +2229,59 @@ __webpack_require__.r(__webpack_exports__);
     EditarInformante: function EditarInformante(informante) {
       var _this2 = this;
 
-      var params = {
-        apellido: informante.apellido,
-        celular: informante.celular
-      };
-      axios.put("/bd-informante/".concat(informante.id), params).then(function (res) {
-        EditarInformante: false;
+      var x = document.getElementById(informante.id);
 
-        var index = _this2.informantes.findIndex(function (InformanteBuscar) {
-          return InformanteBuscar.id === res.data.id;
+      if (x.checked == true) {
+        var params = {
+          apellido: informante.apellido,
+          celular: informante.celular,
+          estado: 'activo'
+        };
+        axios.put("/bd-informante/".concat(informante.id), params);
+      } else {
+        var _params = {
+          apellido: informante.apellido,
+          celular: informante.celular,
+          estado: 'inactivo'
+        };
+        axios.put("/bd-informante/".concat(informante.id), _params);
+      }
+
+      axios.get('/bd-informante').then(function (res) {
+        _this2.informantes = res.data;
+        swal(_this2.informante.apellido + " Actualizado!", "Actualizacion Correcta!", "success");
+        $("#exampleModal").modal("hide");
+        $('#exampleModal').modal({
+          backdrop: 'static',
+          keyboard: false
         });
+      });
+    },
+    activar: function activar(item) {
+      var _this3 = this;
 
-        _this2.informantes[index] = res.data; // this.informante =  {apellido:'',celular:''}
+      var x = document.getElementById(item.id);
 
-        axios.get('/bd-informante').then(function (res) {
-          _this2.informantes = res.data;
-          swal(_this2.informante.apellido + " Actualizado!", "Actualizacion Correcta!", "success");
-          $("#exampleModal").modal("hide");
-          $('#exampleModal').modal({
-            backdrop: 'static',
-            keyboard: false
-          });
-        });
+      if (x.checked == true) {
+        var params = {
+          apellido: item.apellido,
+          celular: item.celular,
+          estado: 'activo'
+        };
+        console.log(params);
+        axios.put("/bd-informante/".concat(item.id), params);
+      } else {
+        var _params2 = {
+          apellido: item.apellido,
+          celular: item.celular,
+          estado: 'inactivo'
+        };
+        console.log(_params2);
+        axios.put("/bd-informante/".concat(item.id), _params2);
+      }
+
+      axios.get('/bd-informante').then(function (res) {
+        _this3.informantes = res.data;
       });
     }
   }
@@ -2309,7 +2357,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var params = {
         apellido: this.informante.apellido,
-        celular: this.informante.celular
+        celular: this.informante.celular,
+        estado: 'activo'
       };
       this.informante = {
         apellido: '',
@@ -3282,13 +3331,13 @@ __webpack_require__.r(__webpack_exports__);
       ventas: [],
       jaladores: [],
       plans: [],
-      informantes: []
+      informantes: [],
+      informer: []
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log('estamos listos');
     axios.get('/bd-informante').then(function (res) {
       _this.informantes = res.data;
     }), axios.get('/bd-jalador').then(function (res) {
@@ -4207,9 +4256,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4248,32 +4294,68 @@ __webpack_require__.r(__webpack_exports__);
     EditarPlan: function EditarPlan(plan) {
       var _this2 = this;
 
-      var params = {
-        nombre: plan.nombre,
-        horario: plan.horario,
-        pension: plan.pension,
-        matricula: plan.matricula,
-        primerpago: plan.primerpago,
-        segundopago: plan.segundopago
-      };
-      axios.put("/bd-plan/".concat(plan.id), params).then(function (res) {
-        EditarPlanEstudio: false;
+      var x = document.getElementById(plan.id);
 
-        var index = _this2.plans.findIndex(function (planBuscar) {
-          return planBuscar.id === res.data.id;
-        });
+      if (x.checked == true) {
+        var params = {
+          nombre: plan.nombre,
+          horario: plan.horario,
+          pension: plan.pension,
+          matricula: plan.matricula,
+          primerpago: plan.primerpago,
+          segundopago: plan.segundopago,
+          estado: 'activo'
+        };
+        axios.put("/bd-plan/".concat(plan.id), params);
+      } else {
+        var _params = {
+          nombre: plan.nombre,
+          horario: plan.horario,
+          pension: plan.pension,
+          matricula: plan.matricula,
+          primerpago: plan.primerpago,
+          segundopago: plan.segundopago,
+          estado: 'inactivo'
+        };
+        axios.put("/bd-plan/".concat(plan.id), _params);
+      }
 
-        _this2.plans[index] = res.data;
-        axios.get('/bd-plan').then(function (res) {
-          _this2.plans = res.data;
-          sweetalert__WEBPACK_IMPORTED_MODULE_0___default()("Buen Trabajo!", "Plan Actualizado Correctamente!", "success");
-          $("#exampleModal").modal("hide");
-          $('#exampleModal').modal({
-            backdrop: 'static',
-            keyboard: false
-          });
+      axios.get('/bd-plan').then(function (res) {
+        _this2.plans = res.data;
+        sweetalert__WEBPACK_IMPORTED_MODULE_0___default()("Buen Trabajo!", "Plan Actualizado Correctamente!", "success");
+        $("#exampleModal").modal("hide");
+        $('#exampleModal').modal({
+          backdrop: 'static',
+          keyboard: false
         });
       });
+    },
+    activar: function activar(item) {
+      var x = document.getElementById(item.id);
+
+      if (x.checked == true) {
+        var params = {
+          nombre: item.nombre,
+          horario: item.horario,
+          pension: item.pension,
+          matricula: item.matricula,
+          primerpago: item.primerpago,
+          segundopago: item.segundopago,
+          estado: 'activo'
+        };
+        axios.put("/bd-plan/".concat(item.id), params);
+      } else {
+        var _params2 = {
+          nombre: item.nombre,
+          horario: item.horario,
+          pension: item.pension,
+          matricula: item.matricula,
+          primerpago: item.primerpago,
+          segundopago: item.segundopago,
+          estado: 'inactivo'
+        };
+        axios.put("/bd-plan/".concat(item.id), _params2);
+      }
     }
   }
 });
@@ -4410,7 +4492,8 @@ __webpack_require__.r(__webpack_exports__);
         pension: this.plan.pension,
         matricula: this.plan.matricula,
         primerpago: this.plan.primerpago,
-        segundopago: this.plan.segundopago
+        segundopago: this.plan.segundopago,
+        estado: 'activo'
       };
       this.plan.nombre = '';
       this.plan.horario = '';
@@ -9370,7 +9453,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-jalador[data-v-68795cb9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-jalador[data-v-68795cb9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-68795cb9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-68795cb9]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-jalador[data-v-68795cb9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-jalador[data-v-68795cb9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-68795cb9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-68795cb9]:hover {\r\n\t color: #340ca0;\n}\n.activ[data-v-68795cb9]{\r\n  position: relative;\r\n  width: 30px;\r\n  height: 15px;\r\n  -webkit-appearance: none;\r\n  background: #c6c6c6;\r\n  outline: none;\r\n  border-radius: 20px;\r\n  transition: .5s;\n}\n.activ[data-v-68795cb9]:checked{\r\n  background: #03a9f4;\n}\n.activ[data-v-68795cb9]:before{\r\n  content: '';\r\n  position: absolute;\r\n  width: 15px;\r\n  height: 15px;\r\n  border-radius: 20px;\r\n  top: 0;\r\n  left: 0;\r\n  background: #fff;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\r\n  transition: .5s;\n}\n.activ[data-v-68795cb9]:checked:before{\r\n  left: 15px;\n}\r\n", ""]);
 
 // exports
 
@@ -9389,7 +9472,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-informante[data-v-7675f9a6] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-informante[data-v-7675f9a6]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-7675f9a6] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-7675f9a6]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-informante[data-v-7675f9a6] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-informante[data-v-7675f9a6]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-7675f9a6] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-7675f9a6]:hover {\r\n\t color: #340ca0;\n}\n.activ[data-v-7675f9a6]{\r\n  position: relative;\r\n  width: 30px;\r\n  height: 15px;\r\n  -webkit-appearance: none;\r\n  background: #c6c6c6;\r\n  outline: none;\r\n  border-radius: 20px;\r\n  transition: .5s;\n}\n.activ[data-v-7675f9a6]:checked{\r\n  background: #03a9f4;\n}\n.activ[data-v-7675f9a6]:before{\r\n  content: '';\r\n  position: absolute;\r\n  width: 15px;\r\n  height: 15px;\r\n  border-radius: 20px;\r\n  top: 0;\r\n  left: 0;\r\n  background: #fff;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\r\n  transition: .5s;\n}\n.activ[data-v-7675f9a6]:checked:before{\r\n  left: 15px;\n}\r\n", ""]);
 
 // exports
 
@@ -9446,7 +9529,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.icon-plan[data-v-01da45f9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-plan[data-v-01da45f9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-01da45f9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-01da45f9]:hover {\r\n\t color: #340ca0;\n}\r\n", ""]);
+exports.push([module.i, "\n.icon-plan[data-v-01da45f9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-plan[data-v-01da45f9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-01da45f9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-01da45f9]:hover {\r\n\t color: #340ca0;\n}\n.activ[data-v-01da45f9]{\r\n  position: relative;\r\n  width: 30px;\r\n  height: 15px;\r\n  -webkit-appearance: none;\r\n  background: #c6c6c6;\r\n  outline: none;\r\n  border-radius: 20px;\r\n  transition: .5s;\n}\n.activ[data-v-01da45f9]:checked{\r\n  background: #03a9f4;\n}\n.activ[data-v-01da45f9]:before{\r\n  content: '';\r\n  position: absolute;\r\n  width: 15px;\r\n  height: 15px;\r\n  border-radius: 20px;\r\n  top: 0;\r\n  left: 0;\r\n  background: #fff;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\r\n  transition: .5s;\n}\n.activ[data-v-01da45f9]:checked:before{\r\n  left: 15px;\n}\r\n", ""]);
 
 // exports
 
@@ -41714,7 +41797,18 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(2, true)
+              _c("td", [
+                _c("input", {
+                  staticClass: "activ",
+                  attrs: { type: "checkbox", id: item.id },
+                  domProps: { checked: item.estadoJ == "activo" },
+                  on: {
+                    click: function($event) {
+                      return _vm.activar(item)
+                    }
+                  }
+                })
+              ])
             ])
           }),
           0
@@ -41752,11 +41846,11 @@ var render = function() {
                   { staticClass: "modal-dialog", attrs: { role: "document" } },
                   [
                     _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(3),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
                         _c("div", { staticClass: "input-group mb-3" }, [
-                          _vm._m(4),
+                          _vm._m(3),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -41786,7 +41880,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "input-group mb-3" }, [
-                          _vm._m(5),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -41820,7 +41914,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(6)
+                      _vm._m(5)
                     ])
                   ]
                 )
@@ -41887,28 +41981,6 @@ var staticRenderFns = [
         _c("th", { staticClass: "icon-jalador", attrs: { scope: "col" } }, [
           _vm._v("OPCION")
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", { staticClass: "custom-control custom-checkbox" }, [
-        _c("input", {
-          staticClass: "custom-control-input",
-          attrs: { type: "checkbox", id: "customCheck1" }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "custom-control-label",
-            attrs: { for: "customCheck1" }
-          },
-          [_vm._v("Desavtivar")]
-        )
       ])
     ])
   },
@@ -42228,22 +42300,16 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("td", [
-                _c("div", { staticClass: "custom-control custom-checkbox" }, [
-                  _c("input", {
-                    staticClass: "custom-control-input",
-                    attrs: { type: "checkbox", id: "customCheck1" },
-                    on: { click: _vm.Desactivar }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "custom-control-label",
-                      attrs: { for: "customCheck1" }
-                    },
-                    [_vm._v("Desavtivar")]
-                  )
-                ])
+                _c("input", {
+                  staticClass: "activ",
+                  attrs: { type: "checkbox", id: item.id },
+                  domProps: { checked: item.estado == "activo" },
+                  on: {
+                    click: function($event) {
+                      return _vm.activar(item)
+                    }
+                  }
+                })
               ])
             ])
           }),
@@ -43892,44 +43958,46 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _vm._l(_vm.plans, function(item, index) {
-                                      return _c(
-                                        "option",
-                                        {
-                                          key: index,
-                                          domProps: { value: item.id }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                Plan: " +
-                                              _vm._s(item.nombre) +
-                                              " Meses | Pension: S/. " +
-                                              _vm._s(
-                                                parseFloat(
-                                                  item.pension
-                                                ).toFixed(2)
-                                              ) +
-                                              " |\n                | Matricula: S/. " +
-                                              _vm._s(
-                                                parseFloat(
-                                                  item.matricula
-                                                ).toFixed(2)
-                                              ) +
-                                              " |\n                1er Pago: S/. " +
-                                              _vm._s(
-                                                parseFloat(
-                                                  item.primerpago
-                                                ).toFixed(2)
-                                              ) +
-                                              " |\n                | 2do Pago: S/. " +
-                                              _vm._s(
-                                                parseFloat(
-                                                  item.segundopago
-                                                ).toFixed(2)
-                                              ) +
-                                              " | \n                "
+                                      return item.estado == "activo"
+                                        ? _c(
+                                            "option",
+                                            {
+                                              key: index,
+                                              domProps: { value: item.id }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                Plan: " +
+                                                  _vm._s(item.nombre) +
+                                                  " Meses | Pension: S/. " +
+                                                  _vm._s(
+                                                    parseFloat(
+                                                      item.pension
+                                                    ).toFixed(2)
+                                                  ) +
+                                                  " |\n                | Matricula: S/. " +
+                                                  _vm._s(
+                                                    parseFloat(
+                                                      item.matricula
+                                                    ).toFixed(2)
+                                                  ) +
+                                                  " |\n                1er Pago: S/. " +
+                                                  _vm._s(
+                                                    parseFloat(
+                                                      item.primerpago
+                                                    ).toFixed(2)
+                                                  ) +
+                                                  " |\n                | 2do Pago: S/. " +
+                                                  _vm._s(
+                                                    parseFloat(
+                                                      item.segundopago
+                                                    ).toFixed(2)
+                                                  ) +
+                                                  " | \n                "
+                                              )
+                                            ]
                                           )
-                                        ]
-                                      )
+                                        : _vm._e()
                                     })
                                   ],
                                   2
@@ -45079,17 +45147,19 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm._l(_vm.informantes, function(item, index) {
-                    return _c(
-                      "option",
-                      { key: index, domProps: { value: item.id } },
-                      [
-                        _vm._v(
-                          "\n               " +
-                            _vm._s(item.apellido) +
-                            "\n               "
+                    return item.estado == "activo"
+                      ? _c(
+                          "option",
+                          { key: index, domProps: { value: item.id } },
+                          [
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(item.apellido) +
+                                "\n               "
+                            )
+                          ]
                         )
-                      ]
-                    )
+                      : _vm._e()
                   })
                 ],
                 2
@@ -45142,17 +45212,19 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm._l(_vm.jaladores, function(item, index) {
-                    return _c(
-                      "option",
-                      { key: index, domProps: { value: item.id } },
-                      [
-                        _vm._v(
-                          "\n               " +
-                            _vm._s(item.apellidoJ) +
-                            "\n               "
+                    return item.estadoJ == "activo"
+                      ? _c(
+                          "option",
+                          { key: index, domProps: { value: item.id } },
+                          [
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(item.apellidoJ) +
+                                "\n               "
+                            )
+                          ]
                         )
-                      ]
-                    )
+                      : _vm._e()
                   })
                 ],
                 2
@@ -46871,7 +46943,18 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(2, true)
+              _c("td", [
+                _c("input", {
+                  staticClass: "activ",
+                  attrs: { type: "checkbox", id: item.id },
+                  domProps: { checked: item.estado == "activo" },
+                  on: {
+                    click: function($event) {
+                      return _vm.activar(item)
+                    }
+                  }
+                })
+              ])
             ])
           }),
           0
@@ -46912,11 +46995,11 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(3),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
                         _c("div", { staticClass: "input-group mb-2" }, [
-                          _vm._m(4),
+                          _vm._m(3),
                           _vm._v(" "),
                           _c(
                             "select",
@@ -46993,7 +47076,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "input-group mb-2" }, [
-                          _vm._m(5),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c(
                             "select",
@@ -47048,7 +47131,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "input-group mb-2" }, [
-                          _vm._m(6),
+                          _vm._m(5),
                           _vm._v(" "),
                           _c(
                             "select",
@@ -47123,11 +47206,11 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._m(7)
+                          _vm._m(6)
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "input-group mb-2" }, [
-                          _vm._m(8),
+                          _vm._m(7),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -47155,11 +47238,11 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
-                          _vm._m(9)
+                          _vm._m(8)
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "input-group" }, [
-                          _vm._m(10),
+                          _vm._m(9),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -47223,7 +47306,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(11)
+                      _vm._m(10)
                     ])
                   ]
                 )
@@ -47298,28 +47381,6 @@ var staticRenderFns = [
         _c("th", { staticClass: "icon-plan", attrs: { scope: "col" } }, [
           _vm._v("OPCION")
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", { staticClass: "custom-control custom-checkbox" }, [
-        _c("input", {
-          staticClass: "custom-control-input",
-          attrs: { type: "checkbox", id: "customCheck1" }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "custom-control-label",
-            attrs: { for: "customCheck1" }
-          },
-          [_vm._v("Desavtivar")]
-        )
       ])
     ])
   },
@@ -62314,8 +62375,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\021019\AppCole\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\021019\AppCole\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Usuario\Desktop\appCollege\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Usuario\Desktop\appCollege\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
