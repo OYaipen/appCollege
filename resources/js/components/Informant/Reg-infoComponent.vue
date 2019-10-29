@@ -24,7 +24,7 @@
             </div>
             <input type="text" class="form-control" maxlength="9" placeholder="ingrese.. (Solo 9 digitos)" v-model="informante.celular" required >
         </div>
-        <button type="submit" class="btn btn-dark btn-lg btn-block">Registrar</button>
+        <button type="submit" class="alert alert-success btn-lg btn-block"><b>Registrar</b></button>
      </form>
     </div>
 </template>

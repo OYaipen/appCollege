@@ -11,27 +11,36 @@
                 </div>
             </div>
         </div>
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" v-model="busqueda"  placeholder="Buscar Informante.." required>
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+          </div>
         <div class="tale-responsive-xl">
-                <table class="table table-hover table-sm  text-center"><!--inicio de tabla  -->
+                <table class="table table-hover table-sm  text-center table table-striped"><!--inicio de tabla  -->
         <thead class="thead-dark">
             <tr>
             <th scope="col" class="icon-informante">N° INFORMANTE</th>
             <th scope="col" class="icon-informante">APELLIDOS Y NOMBRES</th>
             <th scope="col" class="icon-informante">CELULAR</th>
-            <th scope="col" class="icon-informante">EDIT</th>
-            <th scope="col" class="icon-informante">OPCION</th>
+            <th scope="col" class="icon-informante">EDITAR</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(item, index) in informantes" :key="index">
+            <tr v-for="(item, index) in filtrobuscar" :key="index">
               <td>INFO-{{item.id}}</td>
               <td>{{item.apellido}}</td>
-              <td>{{item.celular}}</td>
-              <td><a class="icon-lapiz" href="" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
-              @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
+              <td>+51 {{item.celular}}</td>
               <td>
+<<<<<<< HEAD
               <input type="checkbox" class="activ" @click="activar(item)" v-bind:id="item.id" :checked="item.estado == 'activo'">
               </td> 
+=======
+                <a 
+                href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+              @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
+>>>>>>> Daniel
             </tr>
         </tbody>
       </table> <!--fin de tabla  -->
@@ -39,7 +48,7 @@
 
 <form @submit.prevent="EditarInformante(informante)" v-if="EditarInformanteActivo"> <!--inicio de form  -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><!--  inicio de  modal -->
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title" id="exampleModalLabel">Restaurar Informante <i class="far fa-edit"></i></h3>
@@ -61,12 +70,24 @@
             </div>
             <input type="text" class="form-control" maxlength="9" v-model="informante.celular" required>
         </div>
+        <div class="row">
+                <div class="col-sm-8">
+              <button type="submit" class="alert alert-primary  btn-block mb-2"><b>Actualizar</b></button>
+                </div>
+                <div class="col-sm-4">
+              <button type="button" class="alert alert-danger  btn-block mb-2" data-dismiss="modal"><b>Cerrar</b></button>
+                </div>
+            </div>
           </div><!--final de body -->
+<<<<<<< HEAD
           
           <div class="modal-footer"><!--  inicio de footer -->
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-success">Save</button>
           </div><!--  final de footer -->
+=======
+
+>>>>>>> Daniel
         </div>
       </div>
     </div><!-- fin de modal -->
@@ -80,8 +101,14 @@ export default {
   data() {
     return {
       informantes:[], 
+<<<<<<< HEAD
       informante:{apellido:'',celular:'', estado:''}, 
       EditarInformanteActivo: false
+=======
+      informante:{apellido:'',celular:''}, 
+      EditarInformanteActivo: false,
+      busqueda : ''
+>>>>>>> Daniel
     }
   },
   mounted() {
@@ -153,7 +180,15 @@ export default {
             this.informantes = res.data;
           })
     }
-  }
+  },
+      computed:{
+      filtrobuscar: function() {
+          return this.informantes.filter((item) => 
+          {
+            return item.apellido.toLowerCase().match(this.busqueda.toLowerCase());
+          }) 
+        }    
+      }
 }
 </script>
 <style  scoped>

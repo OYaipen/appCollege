@@ -194,7 +194,7 @@
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-dark btn-lg btn-block">Guardar</button>
+                <button type="submit" class="alert alert-success btn-lg btn-block"><b>Registrar</b></button>
             </div> 
         </form>
     </div>

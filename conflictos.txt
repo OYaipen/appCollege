@@ -1,0 +1,13 @@
+
+CONFLICT (content): Merge conflict in resources/js/components/Plan/PlanComponent.vue
+
+CONFLICT (content): Merge conflict in resources/js/components/Matricula/InformeComponent.vue
+
+CONFLICT (content): Merge conflict in resources/js/components/Informant/InformantesComponent.vue
+
+CONFLICT (content): Merge conflict in resources/js/components/Grabber/JaladorComponent.vue
+
+CONFLICT (content): Merge conflict in public/js/app.js
+
+
+Arreglar los conglictos y hacer un Merge

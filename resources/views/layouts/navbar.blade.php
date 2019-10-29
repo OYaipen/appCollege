@@ -37,22 +37,45 @@
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fab fa-buffer"></i> MODULOS
+         Academia
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/mostrar">Informes y Matriculas</a>
             <a class="dropdown-item" href="/plan">Plan de Estudio</a>
+            <a class="dropdown-item" href="/pagos">Matriculas</a>
+            <a class="dropdown-item" href="/paytoday">Pagos de Matriculas</a>
+        <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Nada por aqui ¯\_(ツ)_/¯</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Asociados
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/informantes">Informantes</a>
             <a class="dropdown-item" href="/jaladores">Jaladores</a>                
+        <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Nada por aqui ¯\_(ツ)_/¯</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Ventas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">              
             <a class="dropdown-item" href="/utiles">Inventario</a>
-            <a class="dropdown-item" href="/pagos">Matriculas</a>
             <a class="dropdown-item" href="/ventas">Punto de Venta</a>
+            <a class="dropdown-item" href="/historialventas">Historial de Ventas</a>
         <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Nada por aqui ¯\_(ツ)_/¯</a>
         </div>
       </li>
       
+      
                     </ul>
+                   
+                
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -75,7 +98,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar Sesion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

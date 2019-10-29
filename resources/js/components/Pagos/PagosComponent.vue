@@ -6,8 +6,8 @@
                 <div class="d-flex justify-content-between border-bottom mb-3 pb-2 align-items-center flex-wrap flex-md-nowra">
                     <h1>MATRICULAS</h1>
                     <div class="btn-toolbar">
-                       <button @click="tableToExcel('table')" class="btn btn-success mr-2" type="button" >
-                        <i class="fas fa-file-excel"></i> DESC EXCEL
+                       <button @click="tableToExcel('table')" class="btn btn-info mr-2" type="button" >
+                        <i class="fas fa-download"></i> EXCEL
                       </button>
                      <button type="submit" class="btn btn-danger mr-2"><i class="fas fa-search"></i> SEARCH </button>
                      <a href="paytoday" class="btn btn-primary">
@@ -36,21 +36,17 @@
   </div> 
 </div>
 <div class="table-responsive-xl">
-    <table ref="table" class="table table-hover table-sm  text-center">
+    <table ref="table" class="table table-hover table-sm  text-center table table-striped">
   <thead class="thead-dark">
     <tr>
       <th scope="col"  class="icon-color">ID</th>
       <th scope="col"  class="icon-color">ALUMNO</th>
       <th scope="col"  class="icon-color">F.MATRICULA</th>
-      <th scope="col"  class="icon-color">CELULAR</th>
-      <th scope="col"  class="icon-color">EMAIL</th>
-      <th scope="col"  class="icon-color">ESCUELA</th>
       <th scope="col"  class="icon-color">CICLO</th>
-      <th scope="col"  class="icon-color">PENSION</th>
+      <th scope="col"  class="icon-color">PLAN</th>
       <th scope="col"  class="icon-color">MATRICULA</th>
-      <th scope="col"  class="icon-color">CUOTA 1</th>
-      <th scope="col"  class="icon-color">CUOTA 2</th>
-      <th scope="col"  class="icon-color">PAGAR</th>
+      <th scope="col"  class="icon-color">DEUDA</th>
+      <th scope="col"  class="icon-color">OPCIONES</th>
       <th scope="col"  class="icon-color">PERFIL</th>
     </tr>
   </thead>
@@ -59,27 +55,23 @@
       <td>M-{{item.id}}</td>
       <td>{{item.fullname}}</td>
       <td>{{item.created_at.substr(0,11)}}</td>
-      <td>{{item.celular}}</td>
-      <td>{{item.email}}</td>
-      <td>{{item.escuela}}</td>
       <td>{{item.nombre}} Meses</td>
       <td>S/. {{item.pension}}.00</td>
       <td>S/. {{item.matricula}}.00</td> 
-      <td>S/. {{item.primerpago}}.00</td>
       <td>S/. {{item.segundopago}}.00</td>
       <td>
         <!-- {{item}} -->
-        <a  class="icon-verde"
+        <a
         @click="Pagar(item)" 
         href="#" 
         data-toggle="modal" 
         data-target="#VenderModal"
         data-backdrop="static">
-        <i class="fas fa-hand-holding-usd"></i>
+        Pagar
         </a>
     </td>
       <td>
-        <a class="icon-perfil"
+        <a
         @click="MostrarPagos(item)" 
         href="#" 
         data-toggle="modal" 
@@ -109,7 +101,7 @@
                 <div class="d-flex justify-content-between pb-2 ">
                     <h3></h3>
                     <div class="btn-toolbar">
-                     <button type="#" class="btn btn-danger mr-2" @click="download"><i class="fas fa-file-pdf"></i> PDF - PERFIL</button>
+                     <button type="#" class="btn btn-danger mr-2" @click="download"><i class="fas fa-file-pdf"></i> PERFIL</button>
                       </div>
                 </div>
             </div>
@@ -251,6 +243,17 @@
                 </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-8">
+           <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">Escuela</div>
+                    </div>
+                    <input type="text" class="form-control"  
+                      v-model="pagos.escuela" disabled>
+                </div>
+                </div>
+            </div>
       </div>
       <hr>
       </div>
@@ -271,21 +274,21 @@
         </button>
       </div>
       <div class="modal-body">
-   <h3>Realizar Pago </h3>
        <div class="row">
     <div class="col-sm">
       <div class="input-group mb-4 mr-sm-2">
           <div class="input-group-prepend">
               <div class="input-group-text">PAGAR</div>
           </div>
-          <input type="number" v-model="pagar.pagocuota" placeholder="Realizar pago de la 2da Cuota" class="form-control" required>
+          <input type="number" v-model="pagar.pagocuota" step="any" placeholder="Realizar pago de la 2da Cuota" class="form-control" required>
       </div>
     </div>
    </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerar</button>
-        <button type="submit" class="btn btn-success">Pagar</button>
+        <div class="row">
+          <div class="col-sm">
+              <button type="submit" class="alert alert-primary  btn-block mb-2"><b>Pagar Cuota</b></button>
+         </div>
+       </div>
       </div>
     </div>
   </div>
@@ -593,15 +596,19 @@ download() {
       }
         if(segundopagot > pagocuota){
            swal("Monto Insuficiente!","Abonar un Monto mayor a S/. "+segundopagot+".00"+" de la 2da Cuota", "error");
+           
         }
+        /*  if (primerpago = null){
+          swal("NO Resultado!","No Tiene ninguna Deuda", "error");
+        }  */
         else{
-          console.log(segundopago)
+         /*  console.log(segundopago) */
          axios.post('/bd-cuotas',registrar)
+          this.PagarCuotaActiva = false;
              swal("Abono S/. "+pagocuota+".00", "Pago Realizado Correctamente!", "success")
 
             $("#VenderModal").modal("hide");
             $("#VenderModal").modal({backdrop: 'static', keyboard: false})
-
         }  
     }
  }

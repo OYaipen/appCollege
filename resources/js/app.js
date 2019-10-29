@@ -26,6 +26,7 @@ Vue.component('ventas', require('./components/PuntoVenta/venta.vue').default);
 //Pagos Realizados
 Vue.component('paytoday', require('./components/PagosRealizados/pagosRealizados.vue').default);
 // Vue.component('datos-alumnos', require('./components/DatosAlumnosComponent.vue').default);
+Vue.component('historialventas', require('./components/HistorialVentas/HistorialVentas.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 

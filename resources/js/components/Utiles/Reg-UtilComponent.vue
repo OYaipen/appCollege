@@ -22,7 +22,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" >Precio.. S/.</span>
             </div>
-            <input type="number" class="form-control" placeholder="Ingrese.." v-model="producto.precio" required>
+            <input type="number" class="form-control" step="any" placeholder="Ingrese.." v-model="producto.precio" required>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -30,7 +30,7 @@
             </div>
             <input type="number" class="form-control" placeholder="Ingrese.." v-model="producto.stock" required>
         </div>
-        <button type="submit" class="btn btn-success">Registrar</button>
+        <button type="submit" class="alert alert-success btn-lg btn-block mb-2"><b>Registrar</b></button>
      </form>
     </div>
 </template>
@@ -58,7 +58,7 @@ export default {
 
              axios.post('/bd-utiles',params)
             .then(res => {
-             swal("Buen Trabajo!", "Accesorio Registrado Correctamente!", "success");
+             swal("Producto Agregado", "Correctamente!", "success");
             })
         }
     },

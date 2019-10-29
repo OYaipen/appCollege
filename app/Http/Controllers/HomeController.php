@@ -57,4 +57,8 @@ class HomeController extends Controller
     {
         return view('paytoday');
     }
+    public function HistorialVentas()
+    {
+        return view('historialventas');
+    }
 }

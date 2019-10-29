@@ -30,7 +30,7 @@ DB_PASSWORD=
 ```
 # suba las migraciones
 ```
-php artisan migrade --seed
+php artisan migrate --seed
 ```
 ### Compile
 ```
@@ -39,7 +39,7 @@ npm run watch
 
 ### Levante el servidor
 ```
-npm artisan serve
+php artisan serve
 ```
 
 
