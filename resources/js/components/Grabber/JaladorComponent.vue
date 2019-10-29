@@ -30,10 +30,7 @@
                     <td><a class="icon-lapiz" href="" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
                     @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
                     <td>
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1">Desavtivar</label>
-                      </div>
+                    <input type="checkbox" class="activ" @click="activar(item)" v-bind:id="item.id" :checked="item.estadoJ == 'activo'">
                     </td>
                     </tr>
         </tbody>
@@ -106,19 +103,25 @@ export default {
     },
     
     EditarJala(jala){
-      const params = {apellidoJ: jala.apellidoJ,
-                      celularJ: jala.celularJ}
-      axios.put(`/bd-jalador/${jala.id}`,params)
+      const x = document.getElementById(jala.id);
 
-      .then(res => {
-       EditarJalador: false
-        const index= this.jaladores.findIndex(
-          jaladorBuscar => jaladorBuscar.id === res.data.id )
-          this.jaladores[index] = res.data;
-
-          // this.jalador =  {apellidoJ:'',celularJ:''}
-
-          axios.get('/bd-jalador')
+      if(x.checked == true){
+        const params = {
+          apellidoJ: jala.apellidoJ,
+          celularJ: jala.celularJ,
+          estadoJ: 'activo'
+        }
+        axios.put(`/bd-jalador/${jala.id}`,params)
+      }
+      else{
+          const params = {
+          apellidoJ: jala.apellidoJ,
+          celularJ: jala.celularJ,
+          estadoJ: 'inactivo'
+        }
+        axios.put(`/bd-jalador/${jala.id}`,params)
+      }
+        axios.get('/bd-jalador')
             .then(res =>{
             this.jaladores = res.data;
              swal(this.jalador.apellidoJ+" Actualizado!", "Acutalizacion Exitosa!", "success");
@@ -126,7 +129,26 @@ export default {
             $("#exampleModal").modal("hide");
             $('#exampleModal').modal({backdrop: 'static', keyboard: false})
           })
-      })
+    },
+    activar(item){
+      const x = document.getElementById(item.id);
+      if(x.checked == true){
+        const params = {
+          apellidoJ: item.apellidoJ,
+          celularJ: item.celularJ,
+          estadoJ: 'activo'
+        }
+        console.log(params)
+        axios.put(`/bd-jalador/${item.id}`,params)
+      }else{
+        const params = {
+          apellidoJ: item.apellidoJ,
+          celularJ: item.celularJ,
+          estadoJ: 'inactivo'
+        }
+        console.log(params)
+        axios.put(`/bd-jalador/${item.id}`,params)
+      }
     }
   }
 }
@@ -143,5 +165,34 @@ export default {
 } 
 .icon-lapiz:hover {
 	 color: #340ca0;
+}
+.activ{
+  position: relative;
+  width: 30px;
+  height: 15px;
+  -webkit-appearance: none;
+  background: #c6c6c6;
+  outline: none;
+  border-radius: 20px;
+  transition: .5s;
+}
+.activ:checked{
+  background: #03a9f4;
+}
+.activ:before{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+  transition: .5s;
+}
+.activ:checked:before{
+  left: 15px;
 }
 </style>

@@ -338,7 +338,7 @@
                     </div>
                 <select class="custom-select" id="SelectedId" v-model="matricular.plan" required>
                 <option value="planes" disabled selected>-- Seleccione Plan --</option>
-                <option v-for="(item, index) in plans" :key="index" v-bind:value="item.id">
+                <option v-for="(item, index) in plans" :key="index" v-bind:value="item.id" v-if="item.estado == 'activo'">
                 Plan: {{item.nombre}} Meses | Pension: S/. {{parseFloat(item.pension).toFixed(2)}} |
                 | Matricula: S/. {{parseFloat(item.matricula).toFixed(2)}} |
                 1er Pago: S/. {{parseFloat(item.primerpago).toFixed(2)}} |

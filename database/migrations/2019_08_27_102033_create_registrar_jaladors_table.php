@@ -17,6 +17,7 @@ class CreateRegistrarJaladorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('apellidoJ');
             $table->integer('celularJ');
+            $table->string('estadoJ');
             $table->bigInteger('user_id_jalador')->unsigned();
             $table->foreign('user_id_jalador')->references('id')->on('users');
             $table->timestamps();
