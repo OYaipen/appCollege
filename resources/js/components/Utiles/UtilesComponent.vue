@@ -3,7 +3,7 @@
             <div class="row">
             <DIV class="col-12">
                 <div class="d-flex justify-content-between border-bottom mb-3 pb-2 align-items-center flex-wrap flex-md-nowra">
-                    <h1>INVENTARIO - UTILES  <i class="fas fa-box-open"></i></h1>
+                    <h1>UTILES  <i class="fas fa-box-open"></i></h1>
                     <div class="btn-toolbar">
                     <a href="/registrarutil" class="btn btn-info mb-2">
                     <i class="fas fa-save"></i> CREAR</a> 
@@ -12,13 +12,13 @@
             </div>
         </div>
 <div class="table-responsive-xl">
-      <table class="table table-hover table-sm  text-center">
+      <table class="table table-hover table-sm  text-center table table-striped">
       <thead class="thead-dark">
         <tr>
           <th scope="col" class="icon-utiles">NOMBRE</th>
           <th scope="col" class="icon-utiles">PRECIO</th>
           <th scope="col" class="icon-utiles">STOCK</th>
-          <th scope="col" class="icon-utiles">EDIT</th>
+          <th scope="col" class="icon-utiles">OPCIONES</th>
         </tr>
       </thead>
     <tbody>
@@ -26,8 +26,9 @@
         <td>{{item.descripcion}}</td>
         <td>S/. {{parseFloat(item.precio).toFixed(2)}}</td>
         <td>{{item.stock}} Unidades</td>
-        <td><a class="icon-lapiz" href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
-         @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
+        <td><a  href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+         @click="EditarFormulario(item)">Agregar</a></td>
+         
       </tr>
     </tbody>
     </table>
@@ -38,14 +39,14 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">Restaurar Utiles <i class="far fa-edit"></i></h3>
+            <h3 class="modal-title" id="exampleModalLabel">Agregar Productos</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
         <div class="modal-body"><!--  inicio de body -->
-        <div class="input-group mb-3">
+       <!--  <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" >Nombre</span>
             </div>
@@ -59,20 +60,19 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">0.00</span>
             </div>
-        </div>
+        </div> -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" >Stock</span>
             </div>
-            <input type="number" class="form-control" v-model="producto.stock" required>
-            
+            <input type="number" class="form-control" v-model="producto.stock" required>    
         </div>
-  
+                    <div class="row">
+                <div class="col-sm">
+              <button type="submit" class="alert alert-primary  btn-block mb-2"><b>Agregar +</b></button>
+                </div>
+            </div>
           </div><!--final de body -->
-
-          <div class="modal-footer"><!--  inicio de footer -->
-            <button type="submit" class="btn btn-success">Agregar</button>
-          </div><!--  final de footer -->
         </div>
       </div>
     </div><!-- fin de modal -->
@@ -124,7 +124,7 @@ export default {
           axios.get('bd-utiles')
          .then(res => {
           this.utiles = res.data;
-          swal("Buen Trabajo!", "Accesorio Actualizado Correctamente!", "success");
+          swal("Producto Agregado!", "Correctamente!", "success");
 
           $("#exampleModal").modal("hide");
           $('#exampleModal').modal({backdrop: 'static', keyboard: false})

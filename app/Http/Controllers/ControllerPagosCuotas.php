@@ -24,7 +24,7 @@ class ControllerPagosCuotas extends Controller
             return PagoCuotas::join('registrars','registrars.id','=','pago_cuotas.id_pagante') 
             ->select('pago_cuotas.id_pagante','pago_cuotas.fullname','pago_cuotas.nombrePlan',
             'pago_cuotas.vuelto','pago_cuotas.pagocuota','pago_cuotas.created_at',
-            'pago_cuotas.pensionPlan','pago_cuotas.segundopago') 
+            'pago_cuotas.pensionPlan','pago_cuotas.segundopago','pago_cuotas.id') 
             ->get(); 
             return view('pagos'); 
         }  

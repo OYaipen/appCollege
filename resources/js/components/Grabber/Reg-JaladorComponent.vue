@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between border-bottom mb-3 pb-2 align-items-center flex-wrap flex-md-nowra">
-                    <h1>REGISTRAR JALADOR</h1>
+                    <h1>REGISTRAR </h1>
                     <div class="btn-toolbar">
                     <a href="/jaladores" class="btn btn-primary mb-2">
                     <i class="fas fa-hand-point-left"></i> REGRESAR</a> 
@@ -24,7 +24,7 @@
             </div>
             <input type="text" class="form-control" maxlength="9"  placeholder="Ingrese.. (Solo 9 Digitos)" v-model="jalador.celularJ" required>
         </div>
-        <button type="submit" class="btn btn-dark btn-lg btn-block">Registrar</button>
+        <button type="submit" class="alert alert-success btn-lg btn-block"><b>Registrar</b></button>
      </form>
     </div>
 </template>

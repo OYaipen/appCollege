@@ -6,8 +6,8 @@
                 <div class="d-flex justify-content-between border-bottom mb-3 pb-2 align-items-center flex-wrap flex-md-nowra">
                     <h1>INFORMES</h1>
                     <div class="btn-toolbar">
-                      <button @click="tableToExcel('table')" class="btn btn-success mr-2" type="button" >
-                        <i class="fas fa-file-excel"></i> EXCEL 
+                      <button @click="tableToExcel('table')" class="btn btn-info mr-2" type="button" >
+                        <i class="fas fa-download"></i> EXCEL 
                       </button>
                      <button type="submit" class="btn btn-danger mr-2"> <i class="fas fa-search"></i> SEARCH </button>
                      <a href="/home" class="btn btn-primary">
@@ -35,17 +35,16 @@
   </div> 
 </div>
     <div class="table-responsive-xl">
-          <table ref="table"  class="table table-hover table-sm  text-center ">
+          <table ref="table"  class="table table-hover table-sm  text-center table table-striped">
       <thead class="thead-dark">
         <tr>
           <th scope="col" class="icon-informe">ID</th>
           <th scope="col" class="icon-informe">INTERESADO</th>
           <th scope="col" class="icon-informe">DNI</th>
           <th scope="col" class="icon-informe">CELULAR</th>
-          <th scope="col" class="icon-informe">SEXO</th>
           <th scope="col" class="icon-informe">F.INFORME</th>
-          <th scope="col" class="icon-informe">EDIT</th>
-          <th scope="col" class="icon-informe">MATRICULAR</th>
+          <th scope="col" class="icon-informe">EDITAR</th>
+          <th scope="col" class="icon-informe">OPCIONES</th>
         </tr>
       </thead>
     <tbody>              
@@ -53,13 +52,13 @@
         <td>I-{{item.id}}</td>
         <td>{{item.fullname}}</td>
         <td>{{item.dni}}</td>
-        <td>{{item.celular}}</td>
-        <td>{{item.sexo}}</td>
+        <td>+51 {{item.celular}}</td>
+        <!-- <td>{{item.sexo}}</td> -->
         <td>{{item.created_at.substr(0,11)}}</td>
-        <td><a class="icon-lapiz" href="#" data-toggle="modal" data-target="#Actualizar_informe" data-backdrop="static" 
+        <td><a href="#" data-toggle="modal" data-target="#Actualizar_informe" data-backdrop="static" 
         @click="EditarInforme(item)"><i class="fas fa-pen-alt"></i></a></td>
-        <td><a class="icon-sistema" href="#" data-toggle="modal" data-target="#Matricular_informe" data-backdrop="static"
-         @click="MatricularAlumno(item)"><i class="fas fa-desktop"></i></a></td>
+        <td><a href="#" data-toggle="modal" data-target="#Matricular_informe" data-backdrop="static"
+         @click="MatricularAlumno(item)">Matricular</a></td>
       </tr>
     </tbody>
     </table>
@@ -72,13 +71,12 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="ActualizarLabel">Actualizar Informe <i class="far fa-edit"></i></h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <h3>Datos del Alumno :</h3>
+            <h5>Datos del Alumno :</h5>
           <div class="row">
     <div class="col-sm-8">
       <div class="input-group mb-2 mr-sm-2">
@@ -162,8 +160,7 @@
       
       </div>
             </div>
-  <hr>
-        <h3>Datos del Padre :</h3>
+        <h5>Datos del Padre :</h5>
             <div class="row">
     <div class="col-sm">
      <div class="input-group mb-2 mr-sm-2">
@@ -206,9 +203,11 @@
                 </div>
                 </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Actualizar</button>
+            <div class="row">
+                <div class="col-sm">
+              <button type="submit" class="alert alert-primary  btn-block mb-2"><b>Acutalizar</b></button>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -221,7 +220,6 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="MatricularLabel">Matricular Alumno <i class="far fa-handshake"></i></h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -235,7 +233,7 @@
               <div class="input-group-text">Apellido Y Nombre</div>
           </div>
           <input type="text" class="form-control"  
-          v-model="matricular.fullname" required>
+          v-model="matricular.fullname" required disabled>
         </div>
     </div>
     <div class="col-sm-4">
@@ -244,7 +242,7 @@
               <div class="input-group-text">Edad</div>
           </div>
           <input type="text" maxlength="2" class="form-control"  
-          v-model="matricular.edad" required>
+          v-model="matricular.edad" required disabled>
       </div>
     </div>
   </div>
@@ -255,7 +253,7 @@
                     <div class="input-group-text">DNI</div>
                     </div>
                     <input type="text" maxlength="8" class="form-control"  
-                    v-model="matricular.dni" required>
+                    v-model="matricular.dni" required disabled>
                 </div>
                 </div>
                 <div class="col-sm">
@@ -264,7 +262,7 @@
                     <div class="input-group-text">E-mail</div>
                     </div>
                     <input type="email"  class="form-control" 
-                    v-model="matricular.email" required>
+                    v-model="matricular.email" required disabled>
                 </div>
                 </div>
              </div>
@@ -276,7 +274,7 @@
                     <div class="input-group-text">Telefono</div>
                     </div>
                     <input type="text" class="form-control"  
-                   placeholder="Ingrese..." v-model="matricular.telf"  required>
+                   placeholder="Ingrese..." v-model="matricular.telf"  required disabled>
                 </div>
                 </div>
             </div>
@@ -339,10 +337,10 @@
                 <select class="custom-select" id="SelectedId" v-model="matricular.plan" required>
                 <option value="planes" disabled selected>-- Seleccione Plan --</option>
                 <option v-for="(item, index) in plans" :key="index" v-bind:value="item.id">
-                Plan: {{item.nombre}} Meses | Pension: S/. {{parseFloat(item.pension).toFixed(2)}} |
-                | Matricula: S/. {{parseFloat(item.matricula).toFixed(2)}} |
+                Plan: {{item.nombre}} Meses | Pension: S/. {{parseFloat(item.pension).toFixed(2)}} 
+                <!-- | Matricula: S/. {{parseFloat(item.matricula).toFixed(2)}} |
                 1er Pago: S/. {{parseFloat(item.primerpago).toFixed(2)}} |
-                | 2do Pago: S/. {{parseFloat(item.segundopago).toFixed(2)}} | 
+                | 2do Pago: S/. {{parseFloat(item.segundopago).toFixed(2)}} |  -->
                 </option>    
             </select>
             </div>
@@ -380,9 +378,11 @@
                 </div>
                 </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Matricular</button>
+            <div class="row">
+                <div class="col-sm">
+              <button type="submit" class="alert alert-primary  btn-block mb-2"><b>Matricular</b></button>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -402,8 +402,7 @@ export default {
       base64:function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
       format:function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) },
       rols:[],
-      rol:{ fullname:'',edad:'',nombrepadre:'',edadpadre:'',celular:'',nacimiento:'',
-            dni:'',email:'',direccion:'',sexo:'',telf:''},
+      rol:{ },
       matricular:[],
       planes:'',
       promociones:null,

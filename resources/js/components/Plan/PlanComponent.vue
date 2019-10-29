@@ -12,7 +12,7 @@
             </div>
         </div>
       <div class="table-responsive-xl">
-            <table class="table table-hover table-sm  text-center">
+            <table class="table table-hover table-sm  text-center table table-striped">
       <thead class="thead-dark">
         <tr>
           <th scope="col" class="icon-plan">PLAN</th>
@@ -20,8 +20,7 @@
           <th scope="col" class="icon-plan">PENSION</th>
           <th scope="col" class="icon-plan">1ER PAGO - PAGO-CASH</th>
           <th scope="col" class="icon-plan">2DO PAGO</th>
-          <th scope="col" class="icon-plan">EDIT</th>
-          <th scope="col" class="icon-plan">OPCION</th>
+          <th scope="col" class="icon-plan">EDITAR</th>
         </tr>
       </thead>
     <tbody>
@@ -31,14 +30,8 @@
         <td>S/. {{item.pension}}.00</td>
         <td>S/. {{item.primerpago}}.00</td>
         <td>S/. {{item.segundopago}}.00</td>
-        <td><a class="icon-lapiz" href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+        <td><a href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
          @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
-        <td>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">Desavtivar</label>
-          </div>
-        </td>
       </tr>
     </tbody>
     </table>
@@ -112,11 +105,16 @@
             <input type="number" placeholder="1er Pago" v-model="plan.primerpago" aria-label="First name" class="form-control">
             <input type="number" placeholder="2do Pago"  v-model="plan.segundopago" aria-label="Last name" class="form-control">
         </div>
+        <div class="row">
+                <div class="col-sm-8">
+              <button type="submit" class="alert alert-primary  btn-block mb-2"><b>Actualizar</b></button>
+                </div>
+                <div class="col-sm-4">
+              <button type="button" class="alert alert-danger  btn-block mb-2" data-dismiss="modal"><b>Cerrar</b></button>
+                </div>
+            </div>
           </div><!--final de body -->
 
-          <div class="modal-footer"><!--  inicio de footer -->
-            <button type="submit" class="btn btn-success">Actualizar</button>
-          </div><!--  final de footer -->
         </div>
       </div>
     </div><!-- fin de modal -->

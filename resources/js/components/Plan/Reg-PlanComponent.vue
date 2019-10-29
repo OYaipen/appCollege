@@ -73,16 +73,8 @@
             <input type="number" placeholder="1er Pago"    v-model="plan.primerpago" aria-label="First name" class="form-control">
             <input type="number" placeholder="2do Pago" :disabled="!directo" v-model="plan.segundopago" aria-label="Last name" class="form-control">
         </div>
-        <button type="submit" class="btn btn-dark btn-lg btn-block mb-2">Registrar</button>
+        <button type="submit" class="alert alert-success btn-lg btn-block mb-2"><b>Registrar</b></button>
      </form>
-        <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading">Muy Importante!</h4>
-        <p> - Verificar si El Joven o Señorita , Padre o Apoderado Realizara el Pago al Cash o Pagara por Cuotas. <br>
-            - Al Realizar el Pago por Cuotas el Alumno Debera Pagar la Matricula. <i class="fas fa-frown"></i> <br>
-            - No Olvide que si el Alumno Paga al Cash no Paga Matricula. <i class="fas fa-grin-hearts"></i></p>
-        <hr>
-         <p class="mb-0">Que tenga un Buen dia Gracias!..</p>
-        </div>
     </div>
 </template>
 

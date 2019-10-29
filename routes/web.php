@@ -35,7 +35,8 @@ Route::get('plan','HomeController@Plan')->name('plan');
 Route::get('/registrarplan','ControllerPlan@create')->name('registrarplan');
 Route::resource('/bd-plan','ControllerPlan')->middleware('auth');
 //plan de Utiles
-Route::get('/utiles','ControllerUtiles@index');
+Route::get('utiles','HomeController@Utiles')->name('utiles');
+Route::get('/filtro','ControllerUtiles@index');
 Route::get('/registrarutil','ControllerUtiles@create')->name('registrarutil');
 Route::resource('/bd-utiles','ControllerUtiles')->middleware('auth');
 //pagos y mensualidades
@@ -47,8 +48,9 @@ Route::get('/buscfecha/{fecha}/{fecha2}', 'VentasController@buscfecha')->name('b
 // Route::get('/buscfecha/{buscar}', 'VentasController@search')->name('search');
 Route::get('/ventas', 'VentasController@index');
 Route::resource('/bd-Ventas','VentasController')->middleware('auth');
+// Historial de Ventas
+Route::get('/historialventas','HomeController@HistorialVentas')->name('historialventas');
 // Cuota
-//Pagos Realizados
 Route::resource('/bd-cuotas','ControllerPagosCuotas')->middleware('auth');
 Route::get('/paytoday','HomeController@Pay')->name('paytoday');
 Route::get('/cuotas','ControllerPagosCuotas@index');
