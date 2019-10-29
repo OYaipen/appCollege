@@ -1947,14 +1947,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
 //
 //
->>>>>>> Daniel
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2426,8 +2428,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
@@ -2436,15 +2436,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
->>>>>>> Daniel
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       informantes: [],
       informante: {
         apellido: '',
-        celular: '',
-        estado: ''
+        celular: ''
       },
       EditarInformanteActivo: false,
       busqueda: ''
@@ -2526,10 +2537,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filtrobuscar: function filtrobuscar() {
-      var _this3 = this;
+      var _this4 = this;
 
       return this.informantes.filter(function (item) {
-        return item.apellido.toLowerCase().match(_this3.busqueda.toLowerCase());
+        return item.apellido.toLowerCase().match(_this4.busqueda.toLowerCase());
       });
     }
   }
@@ -2634,6 +2645,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
 //
 //
 //
@@ -4623,10 +4638,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
 //
-=======
->>>>>>> Daniel
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -9764,10 +9780,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n.icon-jalador[data-v-68795cb9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-jalador[data-v-68795cb9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-68795cb9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-68795cb9]:hover {\r\n\t color: #340ca0;\n}\n.activ[data-v-68795cb9]{\r\n  position: relative;\r\n  width: 30px;\r\n  height: 15px;\r\n  -webkit-appearance: none;\r\n  background: #c6c6c6;\r\n  outline: none;\r\n  border-radius: 20px;\r\n  transition: .5s;\n}\n.activ[data-v-68795cb9]:checked{\r\n  background: #03a9f4;\n}\n.activ[data-v-68795cb9]:before{\r\n  content: '';\r\n  position: absolute;\r\n  width: 15px;\r\n  height: 15px;\r\n  border-radius: 20px;\r\n  top: 0;\r\n  left: 0;\r\n  background: #fff;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\r\n  transition: .5s;\n}\n.activ[data-v-68795cb9]:checked:before{\r\n  left: 15px;\n}\r\n", ""]);
-=======
-exports.push([module.i, "\n.icon-jalador[data-v-68795cb9] { \n   color: rgb(10, 10, 10);\n}\n.icon-jalador[data-v-68795cb9]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-68795cb9] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-68795cb9]:hover {\n\t color: #340ca0;\n}\n", ""]);
+exports.push([module.i, "\n.icon-jalador[data-v-68795cb9] { \n   color: rgb(10, 10, 10);\n}\n.icon-jalador[data-v-68795cb9]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-68795cb9] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-68795cb9]:hover {\n\t color: #340ca0;\n}\n.activ[data-v-68795cb9]{\n  position: relative;\n  width: 30px;\n  height: 15px;\n  -webkit-appearance: none;\n  background: #c6c6c6;\n  outline: none;\n  border-radius: 20px;\n  transition: .5s;\n}\n.activ[data-v-68795cb9]:checked{\n  background: #03a9f4;\n}\n.activ[data-v-68795cb9]:before{\n  content: '';\n  position: absolute;\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  top: 0;\n  left: 0;\n  background: #fff;\n  transform: scale(1.1);\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\n  transition: .5s;\n}\n.activ[data-v-68795cb9]:checked:before{\n  left: 15px;\n}\n", ""]);
 
 // exports
 
@@ -9787,7 +9800,6 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.icon-ventas[data-v-302b8c22] { \n   color: rgb(10, 10, 10);\n}\n.icon-ventas[data-v-302b8c22]:hover {\n\t color: #cf4d25;\n}\n", ""]);
->>>>>>> Daniel
 
 // exports
 
@@ -9806,11 +9818,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n.icon-informante[data-v-7675f9a6] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-informante[data-v-7675f9a6]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-7675f9a6] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-7675f9a6]:hover {\r\n\t color: #340ca0;\n}\n.activ[data-v-7675f9a6]{\r\n  position: relative;\r\n  width: 30px;\r\n  height: 15px;\r\n  -webkit-appearance: none;\r\n  background: #c6c6c6;\r\n  outline: none;\r\n  border-radius: 20px;\r\n  transition: .5s;\n}\n.activ[data-v-7675f9a6]:checked{\r\n  background: #03a9f4;\n}\n.activ[data-v-7675f9a6]:before{\r\n  content: '';\r\n  position: absolute;\r\n  width: 15px;\r\n  height: 15px;\r\n  border-radius: 20px;\r\n  top: 0;\r\n  left: 0;\r\n  background: #fff;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\r\n  transition: .5s;\n}\n.activ[data-v-7675f9a6]:checked:before{\r\n  left: 15px;\n}\r\n", ""]);
-=======
-exports.push([module.i, "\n.icon-informante[data-v-7675f9a6] { \n   color: rgb(10, 10, 10);\n}\n.icon-informante[data-v-7675f9a6]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-7675f9a6] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-7675f9a6]:hover {\n\t color: #340ca0;\n}\n", ""]);
->>>>>>> Daniel
+exports.push([module.i, "\n.icon-informante[data-v-7675f9a6] { \n   color: rgb(10, 10, 10);\n}\n.icon-informante[data-v-7675f9a6]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-7675f9a6] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-7675f9a6]:hover {\n\t color: #340ca0;\n}\n.activ[data-v-7675f9a6]{\n  position: relative;\n  width: 30px;\n  height: 15px;\n  -webkit-appearance: none;\n  background: #c6c6c6;\n  outline: none;\n  border-radius: 20px;\n  transition: .5s;\n}\n.activ[data-v-7675f9a6]:checked{\n  background: #03a9f4;\n}\n.activ[data-v-7675f9a6]:before{\n  content: '';\n  position: absolute;\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  top: 0;\n  left: 0;\n  background: #fff;\n  transform: scale(1.1);\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\n  transition: .5s;\n}\n.activ[data-v-7675f9a6]:checked:before{\n  left: 15px;\n}\n", ""]);
 
 // exports
 
@@ -9867,11 +9875,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n.icon-plan[data-v-01da45f9] { \r\n   color: rgb(10, 10, 10);\n}\n.icon-plan[data-v-01da45f9]:hover {\r\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-01da45f9] { \r\n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-01da45f9]:hover {\r\n\t color: #340ca0;\n}\n.activ[data-v-01da45f9]{\r\n  position: relative;\r\n  width: 30px;\r\n  height: 15px;\r\n  -webkit-appearance: none;\r\n  background: #c6c6c6;\r\n  outline: none;\r\n  border-radius: 20px;\r\n  transition: .5s;\n}\n.activ[data-v-01da45f9]:checked{\r\n  background: #03a9f4;\n}\n.activ[data-v-01da45f9]:before{\r\n  content: '';\r\n  position: absolute;\r\n  width: 15px;\r\n  height: 15px;\r\n  border-radius: 20px;\r\n  top: 0;\r\n  left: 0;\r\n  background: #fff;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\r\n  transition: .5s;\n}\n.activ[data-v-01da45f9]:checked:before{\r\n  left: 15px;\n}\r\n", ""]);
-=======
-exports.push([module.i, "\n.icon-plan[data-v-01da45f9] { \n   color: rgb(10, 10, 10);\n}\n.icon-plan[data-v-01da45f9]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-01da45f9] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-01da45f9]:hover {\n\t color: #340ca0;\n}\n", ""]);
->>>>>>> Daniel
+exports.push([module.i, "\n.icon-plan[data-v-01da45f9] { \n   color: rgb(10, 10, 10);\n}\n.icon-plan[data-v-01da45f9]:hover {\n\t color: #cf4d25;\n}\n.icon-lapiz[data-v-01da45f9] { \n   color: rgb(14, 13, 13);\n}\n.icon-lapiz[data-v-01da45f9]:hover {\n\t color: #340ca0;\n}\n.activ[data-v-01da45f9]{\n  position: relative;\n  width: 30px;\n  height: 15px;\n  -webkit-appearance: none;\n  background: #c6c6c6;\n  outline: none;\n  border-radius: 20px;\n  transition: .5s;\n}\n.activ[data-v-01da45f9]:checked{\n  background: #03a9f4;\n}\n.activ[data-v-01da45f9]:before{\n  content: '';\n  position: absolute;\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  top: 0;\n  left: 0;\n  background: #fff;\n  transform: scale(1.1);\n  box-shadow: 0 2px 5px rgba(0,0,0,.2);\n  transition: .5s;\n}\n.activ[data-v-01da45f9]:checked:before{\n  left: 15px;\n}\n", ""]);
 
 // exports
 
@@ -42195,34 +42199,22 @@ var render = function() {
                           return _vm.EditarFormulario(item)
                         }
                       }
-<<<<<<< HEAD
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-pen-alt" })]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  staticClass: "activ",
-                  attrs: { type: "checkbox", id: item.id },
-                  domProps: { checked: item.estadoJ == "activo" },
-                  on: {
-                    click: function($event) {
-                      return _vm.activar(item)
-                    }
-                  }
-                })
-              ])
-            ])
-          }),
-          0
-        )
-      ])
-=======
                     },
                     [_c("i", { staticClass: "fas fa-pen-alt" })]
                   )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    staticClass: "activ",
+                    attrs: { type: "checkbox", id: item.id },
+                    domProps: { checked: item.estadoJ == "activo" },
+                    on: {
+                      click: function($event) {
+                        return _vm.activar(item)
+                      }
+                    }
+                  })
                 ])
               ])
             }),
@@ -42230,7 +42222,6 @@ var render = function() {
           )
         ]
       )
->>>>>>> Daniel
     ]),
     _vm._v(" "),
     _vm.EditarJalador
@@ -42266,11 +42257,11 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(2),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
                         _c("div", { staticClass: "input-group mb-3" }, [
-                          _vm._m(3),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -42300,7 +42291,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "input-group mb-3" }, [
-                          _vm._m(4),
+                          _vm._m(5),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -42331,17 +42322,10 @@ var render = function() {
                               }
                             }
                           })
-<<<<<<< HEAD
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(5)
-=======
                         ]),
                         _vm._v(" "),
                         _vm._m(6)
                       ])
->>>>>>> Daniel
                     ])
                   ]
                 )
@@ -42966,53 +42950,6 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "tale-responsive-xl" }, [
-<<<<<<< HEAD
-      _c("table", { staticClass: "table table-hover table-sm  text-center" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.informantes, function(item, index) {
-            return _c("tr", { key: index }, [
-              _c("td", [_vm._v("INFO-" + _vm._s(item.id))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.apellido))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.celular))]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "icon-lapiz",
-                    attrs: {
-                      href: "",
-                      "data-toggle": "modal",
-                      "data-target": "#exampleModal",
-                      "data-backdrop": "static"
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.EditarFormulario(item)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-pen-alt" })]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  staticClass: "activ",
-                  attrs: { type: "checkbox", id: item.id },
-                  domProps: { checked: item.estado == "activo" },
-                  on: {
-                    click: function($event) {
-                      return _vm.activar(item)
-                    }
-                  }
-                })
-=======
       _c(
         "table",
         {
@@ -43033,6 +42970,19 @@ var render = function() {
                 _c("td", [_vm._v("+51 " + _vm._s(item.celular))]),
                 _vm._v(" "),
                 _c("td", [
+                  _c("input", {
+                    staticClass: "activ",
+                    attrs: { type: "checkbox", id: item.id },
+                    domProps: { checked: item.estado == "activo" },
+                    on: {
+                      click: function($event) {
+                        return _vm.activar(item)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
                   _c(
                     "a",
                     {
@@ -43051,7 +43001,6 @@ var render = function() {
                     [_c("i", { staticClass: "fas fa-pen-alt" })]
                   )
                 ])
->>>>>>> Daniel
               ])
             }),
             0
@@ -43161,7 +43110,9 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _vm._m(5)
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(6)
                     ])
                   ]
                 )
@@ -43279,6 +43230,27 @@ var staticRenderFns = [
           [_c("b", [_vm._v("Cerrar")])]
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      )
     ])
   }
 ]
@@ -44728,7 +44700,6 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _vm._l(_vm.plans, function(item, index) {
-<<<<<<< HEAD
                                       return item.estado == "activo"
                                         ? _c(
                                             "option",
@@ -44746,46 +44717,9 @@ var render = function() {
                                                       item.pension
                                                     ).toFixed(2)
                                                   ) +
-                                                  " |\n                | Matricula: S/. " +
-                                                  _vm._s(
-                                                    parseFloat(
-                                                      item.matricula
-                                                    ).toFixed(2)
-                                                  ) +
-                                                  " |\n                1er Pago: S/. " +
-                                                  _vm._s(
-                                                    parseFloat(
-                                                      item.primerpago
-                                                    ).toFixed(2)
-                                                  ) +
-                                                  " |\n                | 2do Pago: S/. " +
-                                                  _vm._s(
-                                                    parseFloat(
-                                                      item.segundopago
-                                                    ).toFixed(2)
-                                                  ) +
-                                                  " | \n                "
+                                                  " |\n\n                \n                "
                                               )
                                             ]
-=======
-                                      return _c(
-                                        "option",
-                                        {
-                                          key: index,
-                                          domProps: { value: item.id }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                Plan: " +
-                                              _vm._s(item.nombre) +
-                                              " Meses | Pension: S/. " +
-                                              _vm._s(
-                                                parseFloat(
-                                                  item.pension
-                                                ).toFixed(2)
-                                              ) +
-                                              " \n                "
->>>>>>> Daniel
                                           )
                                         : _vm._e()
                                     })
@@ -47947,34 +47881,22 @@ var render = function() {
                           return _vm.EditarFormulario(item)
                         }
                       }
-<<<<<<< HEAD
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-pen-alt" })]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  staticClass: "activ",
-                  attrs: { type: "checkbox", id: item.id },
-                  domProps: { checked: item.estado == "activo" },
-                  on: {
-                    click: function($event) {
-                      return _vm.activar(item)
-                    }
-                  }
-                })
-              ])
-            ])
-          }),
-          0
-        )
-      ])
-=======
                     },
                     [_c("i", { staticClass: "fas fa-pen-alt" })]
                   )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    staticClass: "activ",
+                    attrs: { type: "checkbox", id: item.id },
+                    domProps: { checked: item.estado == "activo" },
+                    on: {
+                      click: function($event) {
+                        return _vm.activar(item)
+                      }
+                    }
+                  })
                 ])
               ])
             }),
@@ -47982,7 +47904,6 @@ var render = function() {
           )
         ]
       )
->>>>>>> Daniel
     ]),
     _vm._v(" "),
     _vm.EditarPlanEstudio
@@ -48326,17 +48247,10 @@ var render = function() {
                               }
                             }
                           })
-<<<<<<< HEAD
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(10)
-=======
                         ]),
                         _vm._v(" "),
                         _vm._m(10)
                       ])
->>>>>>> Daniel
                     ])
                   ]
                 )
@@ -63314,13 +63228,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\Users\Usuario\Desktop\appCollege\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Usuario\Desktop\appCollege\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! /home/taistana/Documents/prueba}/appCollege/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/taistana/Documents/prueba}/appCollege/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> Daniel
+__webpack_require__(/*! /home/taistana/Documents/Prueba/appCollege/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/taistana/Documents/Prueba/appCollege/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

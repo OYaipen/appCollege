@@ -33,14 +33,14 @@
               <td>{{item.apellido}}</td>
               <td>+51 {{item.celular}}</td>
               <td>
-<<<<<<< HEAD
+
               <input type="checkbox" class="activ" @click="activar(item)" v-bind:id="item.id" :checked="item.estado == 'activo'">
               </td> 
-=======
+<td>
                 <a 
                 href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
               @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
->>>>>>> Daniel
+
             </tr>
         </tbody>
       </table> <!--fin de tabla  -->
@@ -79,15 +79,15 @@
                 </div>
             </div>
           </div><!--final de body -->
-<<<<<<< HEAD
+
           
           <div class="modal-footer"><!--  inicio de footer -->
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-success">Save</button>
           </div><!--  final de footer -->
-=======
 
->>>>>>> Daniel
+
+
         </div>
       </div>
     </div><!-- fin de modal -->
@@ -101,14 +101,10 @@ export default {
   data() {
     return {
       informantes:[], 
-<<<<<<< HEAD
-      informante:{apellido:'',celular:'', estado:''}, 
-      EditarInformanteActivo: false
-=======
       informante:{apellido:'',celular:''}, 
       EditarInformanteActivo: false,
       busqueda : ''
->>>>>>> Daniel
+
     }
   },
   mounted() {

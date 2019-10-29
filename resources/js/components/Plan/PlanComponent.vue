@@ -32,12 +32,11 @@
         <td>S/. {{item.segundopago}}.00</td>
         <td><a href="#" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
          @click="EditarFormulario(item)"><i class="fas fa-pen-alt"></i></a></td>
-<<<<<<< HEAD
         <td>
           <input type="checkbox" class="activ" @click="activar(item)" v-bind:id="item.id" :checked="item.estado == 'activo'">
         </td>
-=======
->>>>>>> Daniel
+
+
       </tr>
     </tbody>
     </table>
