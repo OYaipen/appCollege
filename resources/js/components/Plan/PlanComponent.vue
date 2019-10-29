@@ -1,13 +1,13 @@
 <template>
   <div>
-          <div class="row">
+        <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between border-bottom mb-3 pb-2 align-items-center flex-wrap flex-md-nowra">
                     <h1>PLAN DE ESTUDIO</h1>
                     <div class="btn-toolbar">
                     <a href="/registrarplan" class="btn btn-primary mr-2">
                     <i class="fas fa-save"></i> CREAR</a> 
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
           <th scope="col" class="icon-plan">PLAN</th>
           <th scope="col" class="icon-plan">MATRICULA</th>
           <th scope="col" class="icon-plan">PENSION</th>
-          <th scope="col" class="icon-plan">1ER PAGO - PAGO-CASH</th>
+          <th scope="col" class="icon-plan">1ER PAGO</th>
           <th scope="col" class="icon-plan">2DO PAGO</th>
           <th scope="col" class="icon-plan">EDITAR</th>
         </tr>
@@ -47,7 +47,6 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
         <div class="modal-body"><!--  inicio de body -->
             <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -114,7 +113,6 @@
                 </div>
             </div>
           </div><!--final de body -->
-
         </div>
       </div>
     </div><!-- fin de modal -->
@@ -143,7 +141,6 @@ export default {
     methods:{
     EditarFormulario(item){
       this. EditarPlanEstudio = true;
-
       this.plan.nombre = item.nombre;
       this.plan.horario = item.horario;
       this.plan.pension = item.pension;
@@ -152,7 +149,6 @@ export default {
       this.plan.segundopago = item.segundopago;
       this.plan.id = item.id;
     },
-    
     EditarPlan(plan){
       const params = {nombre: plan.nombre,
                       horario: plan.horario,

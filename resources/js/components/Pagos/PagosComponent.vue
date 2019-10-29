@@ -596,13 +596,15 @@ download() {
       }
         if(segundopagot > pagocuota){
            swal("Monto Insuficiente!","Abonar un Monto mayor a S/. "+segundopagot+".00"+" de la 2da Cuota", "error");
+           
         }
-         /* if (segundopagot === 0){
+        /*  if (primerpago = null){
           swal("NO Resultado!","No Tiene ninguna Deuda", "error");
-        } */
+        }  */
         else{
          /*  console.log(segundopago) */
          axios.post('/bd-cuotas',registrar)
+          this.PagarCuotaActiva = false;
              swal("Abono S/. "+pagocuota+".00", "Pago Realizado Correctamente!", "success")
 
             $("#VenderModal").modal("hide");

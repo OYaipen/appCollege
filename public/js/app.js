@@ -4178,12 +4178,13 @@ __webpack_require__.r(__webpack_exports__);
       if (segundopagot > pagocuota) {
         sweetalert__WEBPACK_IMPORTED_MODULE_1___default()("Monto Insuficiente!", "Abonar un Monto mayor a S/. " + segundopagot + ".00" + " de la 2da Cuota", "error");
       }
-      /* if (segundopagot === 0){
-       swal("NO Resultado!","No Tiene ninguna Deuda", "error");
-      } */
+      /*  if (primerpago = null){
+        swal("NO Resultado!","No Tiene ninguna Deuda", "error");
+      }  */
       else {
           /*  console.log(segundopago) */
           axios.post('/bd-cuotas', registrar);
+          this.PagarCuotaActiva = false;
           sweetalert__WEBPACK_IMPORTED_MODULE_1___default()("Abono S/. " + pagocuota + ".00", "Pago Realizado Correctamente!", "success");
           $("#VenderModal").modal("hide");
           $("#VenderModal").modal({
@@ -4438,8 +4439,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
 //
 //
 //
@@ -48125,7 +48124,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "icon-plan", attrs: { scope: "col" } }, [
-          _vm._v("1ER PAGO - PAGO-CASH")
+          _vm._v("1ER PAGO")
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "icon-plan", attrs: { scope: "col" } }, [

@@ -43,6 +43,7 @@
             <a class="dropdown-item" href="/mostrar">Informes y Matriculas</a>
             <a class="dropdown-item" href="/plan">Plan de Estudio</a>
             <a class="dropdown-item" href="/pagos">Matriculas</a>
+            <a class="dropdown-item" href="/paytoday">Pagos de Matriculas</a>
         <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Nada por aqui ¯\_(ツ)_/¯</a>
         </div>
