@@ -45,6 +45,7 @@ class ControllerJalador extends Controller
         $jalador = new RegistrarJalador();
         $jalador->apellidoJ = $request->apellidoJ;
         $jalador->celularJ = $request->celularJ;
+        $jalador->estadoJ = $request->estadoJ;
         $jalador->user_id_jalador = auth()->id();
         $jalador->save();
     
@@ -85,6 +86,7 @@ class ControllerJalador extends Controller
         $jalador = RegistrarJalador::find($id);
         $jalador->apellidoJ = $request->apellidoJ;
         $jalador->celularJ = $request->celularJ;
+        $jalador->estadoJ = $request->estadoJ;
         $jalador->save();
         return $jalador;
     }

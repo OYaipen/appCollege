@@ -17,6 +17,7 @@ class CreateRegistrarInformantesTable extends Migration
             $table->bigIncrements('id');
             $table->string('apellido');
             $table->integer('celular');
+            $table->string('estado');
             $table->bigInteger('user_id_informante')->unsigned();
             $table->foreign('user_id_informante')->references('id')->on('users');
             $table->timestamps();

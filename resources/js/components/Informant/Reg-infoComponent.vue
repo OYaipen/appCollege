@@ -54,7 +54,8 @@ import swal from 'sweetalert';
         //    }
            const params = {
                apellido : this.informante.apellido,
-               celular: this.informante.celular
+               celular: this.informante.celular,
+               estado: 'activo'
                 }
                 
              this.informante  = {apellido :'',celular : ''}

@@ -49,6 +49,7 @@ class ControllerPlan extends Controller
         $plan->matricula = $request->matricula;
         $plan->primerpago = $request->primerpago;
         $plan->segundopago = $request->segundopago;
+        $plan->estado = $request->estado;
         $plan->user_id_plan = auth()->id();
         $plan->save();
     
@@ -93,6 +94,7 @@ class ControllerPlan extends Controller
         $plan->matricula = $request->matricula;
         $plan->primerpago = $request->primerpago;
         $plan->segundopago = $request->segundopago;
+        $plan->estado = $request->estado;
         $plan->save();
         return $plan;
     }

@@ -45,6 +45,7 @@ class ControllerInformante extends Controller
         $informante = new RegistrarInformante();
         $informante->apellido = $request->apellido;
         $informante->celular = $request->celular;
+        $informante->estado = $request->estado;
         $informante->user_id_informante = auth()->id();
         $informante->save();
         return $informante;
@@ -84,6 +85,7 @@ class ControllerInformante extends Controller
         $informante = RegistrarInformante::find($id);
         $informante->apellido = $request->apellido;
         $informante->celular = $request->celular;
+        $informante->estado = $request->estado;
         $informante->save();
         return $informante;
     }
