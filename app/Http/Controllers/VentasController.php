@@ -102,9 +102,6 @@ class VentasController extends Controller
     {
         //
     }
-    public function sumtotal(){
-        return Ventas::sum('total');
-    }
 
 
     public function buscfecha($fecha,$fecha2){
@@ -112,5 +109,10 @@ class VentasController extends Controller
            ->select('registrar_utiles.descripcion','ventas.cantidad','ventas.created_at','ventas.total')
            ->whereBetween('ventas.created_at',array($fecha,$fecha2))
            ->get();
+    }
+    public function SumarBusqueda($fecha,$fecha2){
+        return Ventas::whereBetween('created_at', array($fecha,$fecha2))
+                     ->select(DB::raw('SUM(total)'))
+                     ->get();
     }
 }

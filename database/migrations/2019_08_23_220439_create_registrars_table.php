@@ -23,6 +23,7 @@ class CreateRegistrarsTable extends Migration
             $table->string('promocion');
             $table->date('fechainicio');
             $table->date('fechafinal');
+            $table->string('foto')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

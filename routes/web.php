@@ -42,7 +42,6 @@ Route::resource('/bd-utiles','ControllerUtiles')->middleware('auth');
 Route::get('/pagos','HomeController@Pagos')->name('pagos');
 Route::get('/bd-pagos','ControllerPagos@index');
 //Ventas
-Route::get('/sumtotal','VentasController@sumtotal')->name('sumtotal');
 Route::get('/buscfecha/{fecha}/{fecha2}', 'VentasController@buscfecha')->name('buscfecha');
 // Route::get('/buscfecha/{buscar}', 'VentasController@search')->name('search');
 Route::get('/ventas', 'VentasController@index');

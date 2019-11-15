@@ -15,7 +15,6 @@ class ControllerAll extends Controller
         $this->middleware('auth');
     }
     /**
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -57,19 +56,12 @@ class ControllerAll extends Controller
      */
     public function store(Request $request)
     {
-        $capturar = new Registrar();
-        $capturar->id_rol = $request->id_rol;
-        $capturar->institucion = $request->institucion;
-        $capturar->materia = $request->materia;
-        $capturar->escuela = $request->escuela;
-        $capturar->id_plan = $request->id_plan;
-        $capturar->promocion = $request->promocion;
-        $capturar->fechainicio = $request->fechainicio;
-        $capturar->fechafinal = $request->fechafinal;
-        $capturar->user_id = auth()->id();
-        $capturar->save();
-    
-        return $capturar;
+
+        if($request->hasFile('foto')){
+            $file = $request->file('foto');
+            $nombre = time().$file->getClientOriginalName();
+            $file->move(public_path().'/imagenes/',$nombre);
+        }
     }
 
     // public function search($buscar){
@@ -86,6 +78,7 @@ class ControllerAll extends Controller
            ->whereBetween('registrars.created_at',array($fecha,$fecha2))
            ->get();
     }
+
     /**
      * Display the specified resource.
      *

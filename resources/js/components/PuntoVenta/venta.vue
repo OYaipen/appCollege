@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-    <h1>Total: S/. {{parseFloat(sumtotal).toFixed(2)}}</h1>
+    <h1>Total: S/. {{parseFloat(total).toFixed(2)}}</h1>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text"><i class="fas fa-box-open"></i></span>
@@ -86,6 +86,13 @@
        <td>S/. {{parseFloat(item.total).toFixed(2)}}</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="3">Total</th>
+        <th>S/. {{parseFloat(total).toFixed(2)}}</th>
+      </tr>
+      
+    </tfoot>
 </table>
 </div>
 <!----------------------------------------------------------------------------------------------------------------->
@@ -101,6 +108,7 @@ export default {
       template:'<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>',
       base64:function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
       format:function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) },
+        sum: [],
         utiles: [],
         producto: {descripcion: '',precio: '',stock: ''},
         busqueda: [],
@@ -111,10 +119,6 @@ export default {
     },
     created(){
 
-      axios.get('/sumtotal')
-      .then(res => {
-        this.sumtotal = res.data;
-      })
 
       axios.get('ventas')
       .then(res => {
@@ -203,6 +207,10 @@ export default {
 
     },
     computed:{
+      total: function(){
+        let sum = 0;
+        return this.ventas.reduce((sum, item) => sum+item.total,0);
+      },
 
       filtrobuscar: function() {
         

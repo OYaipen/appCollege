@@ -215,7 +215,7 @@
     </div>
 </form>
   <!-- modal matricular -->
-<form @submit.prevent="MatriculaGeneral()" v-if="MatriculaActiva"> 
+<form enctype="multipart/form-data" @submit.prevent="create" v-if="MatriculaActiva"> 
     <!-- Modal -->
     <div class="modal fade" id="Matricular_informe" tabindex="-1" role="dialog" aria-labelledby="MatricularLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -378,6 +378,8 @@
                     </div>
                     <input type="date" class="form-control"  placeholder="Fecha Culminacion" v-model="matricular.fechafinal" required>
                 </div>
+                <input type="file" @change="obtenerImagen" name="foto" id="foto">
+                <img :src="foto" width="200px" height="200px">
                 </div>
             </div>
           </div>
@@ -397,6 +399,8 @@ import swal from 'sweetalert';
 export default {
   data() {
     return {
+      files: [],
+      imagenMiniatura: '',
       uri:'data:application/vnd.ms-excel;base64,',
       template:'<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>',
       base64:function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
@@ -410,7 +414,8 @@ export default {
       plans:[],
       EditarInformeActivo: false,
       MatriculaActiva: false,
-      fecha:[]
+      fecha:[],
+      imagen: ''
     }
   },
   mounted() {
@@ -430,7 +435,40 @@ export default {
 
     })
   },
+  computed: {
+    foto(){
+      return this.imagenMiniatura;
+    }
+  },
    methods:{
+     create(e){
+
+       let foto = e.dataTransfer.files;
+       this.imagen = foto;
+
+       axios.post('/bd-matricula',foto)
+       .then(response => {
+      swal(" GAAA! ", "Imagen Enviada", "success")
+    })
+    .catch(error => {
+      swal('ERROR!','No se pudo Enviar '+error,'error');
+    })
+
+     },
+     obtenerImagen(e){
+       let file = e.target.files[0];
+       this.imagen = file;
+        console.log(file)
+       this.cargarImagen(file);
+       
+     },
+     cargarImagen(file){
+       let reader = new FileReader();
+        reader.onload = (e) => {
+          this.imagenMiniatura = e.target.result;
+        }
+       reader.readAsDataURL(file);
+     },
 calcular(){
        
   const index = this.plans.findIndex(bus => bus.id === this.matricular.plan)
@@ -655,6 +693,7 @@ calcular(){
         const promo = this.matricular.promocion;
         const f_inicio = this.matricular.fechainicio;
         const f_final = this.matricular.fechafinal
+        const foto = this.imagen
 
         const params = {
             id_rol : id,
@@ -664,14 +703,19 @@ calcular(){
             escuela:escuela,
             promocion : promo,
             fechainicio : f_inicio,
-            fechafinal : f_final
+            fechafinal : f_final,
+            foto: foto
         }
-
-          axios.post('/bd-matricula',params)
-          swal(this.matricular.fullname+" Matriculado!", "Matricula Registrada Correctamente!", "success")
-          
-          $("#Matricular_informe").modal("hide");
+    axios.post('/bd-matricula',params)
+    .then(response => {
+      swal(this.matricular.fullname+" Matriculado!", "Matricula Registrada Correctamente!", "success")
+      $("#Matricular_informe").modal("hide");
           $("#Matricular_informe").modal({backdrop: 'static', keyboard: false})
+    })
+    .catch(error => {
+      swal('ERROR!','No se pudo registrar la matricula '+error,'error');
+    });
+                    
     }
     
   }

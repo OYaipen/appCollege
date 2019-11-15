@@ -2731,10 +2731,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      files: [],
+      imagenMiniatura: '',
       uri: 'data:application/vnd.ms-excel;base64,',
       template: '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>',
       base64: function base64(s) {
@@ -2765,7 +2769,8 @@ __webpack_require__.r(__webpack_exports__);
       plans: [],
       EditarInformeActivo: false,
       MatriculaActiva: false,
-      fecha: []
+      fecha: [],
+      imagen: ''
     };
   },
   mounted: function mounted() {
@@ -2779,12 +2784,43 @@ __webpack_require__.r(__webpack_exports__);
       _this.rols = res.data;
     });
   },
+  computed: {
+    foto: function foto() {
+      return this.imagenMiniatura;
+    }
+  },
   methods: {
-    calcular: function calcular() {
+    create: function create(e) {
+      var foto = e.dataTransfer.files;
+      this.imagen = foto;
+      axios.post('/bd-matricula', foto).then(function (response) {
+        sweetalert__WEBPACK_IMPORTED_MODULE_0___default()(" GAAA! ", "Imagen Enviada", "success");
+      })["catch"](function (error) {
+        sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('ERROR!', 'No se pudo Enviar ' + error, 'error');
+      });
+    },
+    obtenerImagen: function obtenerImagen(e) {
+      var file = e.target.files[0];
+      this.imagen = file;
+      console.log(file);
+      this.cargarImagen(file);
+    },
+    cargarImagen: function cargarImagen(file) {
       var _this2 = this;
 
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        _this2.imagenMiniatura = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    calcular: function calcular() {
+      var _this3 = this;
+
       var index = this.plans.findIndex(function (bus) {
-        return bus.id === _this2.matricular.plan;
+        return bus.id === _this3.matricular.plan;
       });
       var x = new Date(this.matricular.fechainicio);
       var m = x.getMonth() + 1;
@@ -2922,12 +2958,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     //---------------------------------------------  Actualizar Informe-----------------------------------------------------
     buscar: function buscar() {
-      var _this3 = this;
+      var _this4 = this;
 
       var fecha = this.rols.fecha;
       var fecha2 = this.rols.fecha2;
       axios.get("/searchFecha/".concat(fecha, "%/").concat(fecha2, "%")).then(function (res) {
-        _this3.rols = res.data;
+        _this4.rols = res.data;
       });
     },
     EditarInforme: function EditarInforme(item) {
@@ -2947,7 +2983,7 @@ __webpack_require__.r(__webpack_exports__);
       this.rol.id = item.id;
     },
     ActualizarInforme: function ActualizarInforme(rol) {
-      var _this4 = this;
+      var _this5 = this;
 
       var params = {
         fullname: rol.fullname,
@@ -2966,13 +3002,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.put("/bd-informes/".concat(rol.id), params).then(function (res) {
         EditarInformeActivo: false;
 
-        var index = _this4.rols.findIndex(function (InformeActualizar) {
+        var index = _this5.rols.findIndex(function (InformeActualizar) {
           return InformeActualizar.id === res.data.id;
         });
 
-        _this4.rols[index] = res.data;
+        _this5.rols[index] = res.data;
         axios.get('/bd-informes').then(function (res) {
-          _this4.rols = res.data;
+          _this5.rols = res.data;
           sweetalert__WEBPACK_IMPORTED_MODULE_0___default()("Informe Actualizado", "Actualizacion Correcta!", "success");
           $("#Actualizar_informe").modal("hide");
           $("#Actualizar_informe").modal({
@@ -3013,6 +3049,8 @@ __webpack_require__.r(__webpack_exports__);
       this.matricular.id = item.id;
     },
     MatriculaGeneral: function MatriculaGeneral() {
+      var _this6 = this;
+
       var id = this.matricular.id;
       var institucion = this.matricular.institucion;
       var materia = this.matricular.materia;
@@ -3021,6 +3059,7 @@ __webpack_require__.r(__webpack_exports__);
       var promo = this.matricular.promocion;
       var f_inicio = this.matricular.fechainicio;
       var f_final = this.matricular.fechafinal;
+      var foto = this.imagen;
       var params = {
         id_rol: id,
         id_plan: plan,
@@ -3029,14 +3068,18 @@ __webpack_require__.r(__webpack_exports__);
         escuela: escuela,
         promocion: promo,
         fechainicio: f_inicio,
-        fechafinal: f_final
+        fechafinal: f_final,
+        foto: foto
       };
-      axios.post('/bd-matricula', params);
-      sweetalert__WEBPACK_IMPORTED_MODULE_0___default()(this.matricular.fullname + " Matriculado!", "Matricula Registrada Correctamente!", "success");
-      $("#Matricular_informe").modal("hide");
-      $("#Matricular_informe").modal({
-        backdrop: 'static',
-        keyboard: false
+      axios.post('/bd-matricula', params).then(function (response) {
+        sweetalert__WEBPACK_IMPORTED_MODULE_0___default()(_this6.matricular.fullname + " Matriculado!", "Matricula Registrada Correctamente!", "success");
+        $("#Matricular_informe").modal("hide");
+        $("#Matricular_informe").modal({
+          backdrop: 'static',
+          keyboard: false
+        });
+      })["catch"](function (error) {
+        sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('ERROR!', 'No se pudo registrar la matricula ' + error, 'error');
       });
     }
   }
@@ -4533,6 +4576,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4547,6 +4597,7 @@ __webpack_require__.r(__webpack_exports__);
           return c[p];
         });
       },
+      sum: [],
       utiles: [],
       producto: {
         descripcion: '',
@@ -4562,9 +4613,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/sumtotal').then(function (res) {
-      _this.sumtotal = res.data;
-    });
     axios.get('ventas').then(function (res) {
       _this.ventas = res.data;
     });
@@ -4643,6 +4691,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
+    total: function total() {
+      var sum = 0;
+      return this.ventas.reduce(function (sum, item) {
+        return sum + item.total;
+      }, 0);
+    },
     filtrobuscar: function filtrobuscar() {
       var _this4 = this;
 
@@ -43416,10 +43470,11 @@ var render = function() {
       ? _c(
           "form",
           {
+            attrs: { enctype: "multipart/form-data" },
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                return _vm.MatriculaGeneral()
+                return _vm.create($event)
               }
             }
           },
@@ -44092,7 +44147,20 @@ var render = function() {
                                   }
                                 })
                               ]
-                            )
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "file", name: "foto", id: "foto" },
+                              on: { change: _vm.obtenerImagen }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              attrs: {
+                                src: _vm.foto,
+                                width: "200px",
+                                height: "200px"
+                              }
+                            })
                           ])
                         ])
                       ]),
@@ -47986,7 +48054,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("h1", [
-      _vm._v("Total: S/. " + _vm._s(parseFloat(_vm.sumtotal).toFixed(2)))
+      _vm._v("Total: S/. " + _vm._s(parseFloat(_vm.total).toFixed(2)))
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "input-group mb-3" }, [
@@ -48291,7 +48359,17 @@ var render = function() {
               ])
             }),
             0
-          )
+          ),
+          _vm._v(" "),
+          _c("tfoot", [
+            _c("tr", [
+              _c("th", { attrs: { colspan: "3" } }, [_vm._v("Total")]),
+              _vm._v(" "),
+              _c("th", [
+                _vm._v("S/. " + _vm._s(parseFloat(_vm.total).toFixed(2)))
+              ])
+            ])
+          ])
         ]
       )
     ])
@@ -62314,8 +62392,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\021019\AppCole\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\021019\AppCole\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Usuario\Desktop\appCollege\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Usuario\Desktop\appCollege\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
